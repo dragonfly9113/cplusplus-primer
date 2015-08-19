@@ -118,7 +118,7 @@ int ex1_19()
 }
 
 // Exercise 1.20
-int main()
+int ex1_20()
 {
 	Sales_item book;
 
@@ -131,3 +131,70 @@ int main()
 	return 0;
 }
 
+// Exercise 1.21
+int ex1_21()
+{
+	Sales_item book1, book2;
+	
+	std::cout << "Enter two book sale transactions:" << std::endl;
+	std::cin >> book1 >> book2;
+	std::cout << book1 + book2 << std::endl;
+	
+	return 0;
+}
+
+// Exercise 1.22
+int ex1_22()
+{
+	Sales_item book;
+	Sales_item total;
+	
+	std::cout << "Enter several book sale transactions with the same ISBN:" << std::endl;
+	while(std::cin >> book) {
+		total += book;
+	}
+
+	std::cout << total << std::endl;
+	
+	return 0;
+}
+
+// Exercise 1.23: reads several transactions and counts how many transactions occur for each ISBN
+int ex1_23()
+{
+	Sales_item book, currBook;
+	int cnt;
+	
+	std::cout << "Enter several book sale transactions:" << std::endl;
+	// read in the first transaction:
+	if(std::cin >> book) {
+		currBook = book;
+		cnt = 1;
+		
+		// read in other transactions:
+		while(std::cin >> book) {
+			if(book.isbn() == currBook.isbn())	// if this transaction has the same isbn 
+				++cnt;
+			else {	// if this transaction has a different isbn
+				std::cout << "isbn: " << currBook.isbn() << " transaction number: " << cnt << std::endl; 
+			
+				currBook = book;
+				cnt = 1;
+			}
+		}
+		
+		// no more transactions
+		std::cout << "isbn: " << currBook.isbn() << " transaction number: " << cnt << std::endl; 		
+	}
+
+	return 0;
+}
+
+// Exercise 1.25: The bookstore program
+int main()
+{
+	Sales_item total;
+	
+	
+	return 0;
+}
