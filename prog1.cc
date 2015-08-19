@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main()
+int ex1_4_1()
 {
 //	std::cout << "Enter two numbers:" << std::endl;
 //	int v1 = 0, v2 = 0;
@@ -45,3 +45,54 @@ int main()
 	return 0;
 }
 
+int ex1_4_2()
+{
+	// Exercises section 1.4.2
+	int sum = 0;
+	for(int i = -100; i <= 100; ++i)
+		sum += i;
+	
+	std::cout << sum << std::endl;
+
+	std::cout << "Enter two numbers:" << std::endl;
+	int v1 = 0, v2 = 0;
+	std::cin >> v1 >> v2;
+	for(int i = v1; i <= v2; ++i)
+		std::cout << i << std::endl;
+	
+	return 0;
+}
+
+int example1_4()
+{
+	int sum = 0, value = 0;
+	std::cout << "Enter integers to add up. Ctrl-D to stop." << std::endl;
+	while(std::cin >> value)
+		sum += value;
+	std::cout << "Sum is: " << sum << std::endl;
+	
+	return 0;
+}
+
+int main()
+{
+	int currVal = 0, val = 0;
+	if (std::cin >> currVal) {
+		int cnt = 0;
+		while(std::cin >> val) {
+			if (val == currVal)
+				++cnt;
+			else {
+				std::cout << currVal << " occurs "
+						<< cnt << " times" << std::endl;
+				currVal = val;
+				cnt = 1;
+			}
+		}
+		
+		std::cout << currVal << " occurs "
+				<< cnt << " times" << std::endl;
+	}
+	
+	return 0;
+}
