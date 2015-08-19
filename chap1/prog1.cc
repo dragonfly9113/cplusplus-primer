@@ -74,11 +74,12 @@ int example1_4()
 	return 0;
 }
 
-int main()
+// Count how many consecutive times each distinct value appears in the input:
+int ex1_4_4()
 {
 	int currVal = 0, val = 0;
 	if (std::cin >> currVal) {
-		int cnt = 0;
+		int cnt = 1;
 		while(std::cin >> val) {
 			if (val == currVal)
 				++cnt;
@@ -96,3 +97,22 @@ int main()
 	
 	return 0;
 }
+
+int ex1.19()
+{
+	std::cout << "Enter two numbers:" << std::endl;
+	int v1 = 0, v2 = 0;
+	std::cin >> v1 >> v2;
+	
+	if(v1 < v2) {
+		while(v1 < v2) {
+			std::cout << v1 << std::endl;
+			++v1;
+		}
+	}
+	else
+		std::cout << "The first number should be smaller than the second one." << std::endl;
+	
+	return 0;
+}
+
