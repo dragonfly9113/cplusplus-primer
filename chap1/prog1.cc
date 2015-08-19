@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Sales_item.h"
 
 int ex1_4_1()
 {
@@ -98,7 +99,7 @@ int ex1_4_4()
 	return 0;
 }
 
-int ex1.19()
+int ex1_19()
 {
 	std::cout << "Enter two numbers:" << std::endl;
 	int v1 = 0, v2 = 0;
@@ -113,6 +114,20 @@ int ex1.19()
 	else
 		std::cout << "The first number should be smaller than the second one." << std::endl;
 	
+	return 0;
+}
+
+// Exercise 1.20
+int main()
+{
+	Sales_item book;
+
+	std::cout << "Read in a set of book transactions:" << std::endl;
+	while(std::cin >> book) {
+		// writing each transaction to the standard output:
+		std::cout << book << std::endl;
+	}
+
 	return 0;
 }
 
