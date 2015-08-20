@@ -195,6 +195,26 @@ int main()
 {
 	Sales_item total;
 	
+	// read in the first record and see if it is valid:
+	if(std::cin >> total) {
+		Sales_item trans;
+		
+		while(std::cin >> trans) {
+			if(trans.isbn() == total.isbn()) // if this isbn is the same, update the total
+				total += trans;
+			else { 		// if this isbn is different, print out the last total and reset
+				std::cout << total << std::endl;
+				total = trans;
+			}
+		}
+		
+		// print the last trans:
+		std::cout << total << std::endl;
+	}
+	else {
+		std::cerr << "No data?!" << std::endl;
+		return -1;
+	}
 	
 	return 0;
 }
