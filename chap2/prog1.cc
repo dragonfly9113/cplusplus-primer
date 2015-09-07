@@ -139,3 +139,36 @@ int ex2_27()
 	return 0;
 }
 
+// Exercise 2.28
+int ex2_28()
+{
+	//int i, *const cp;
+	//int *p1, *const p2;
+	//const int ic, &r = ic;
+	//const int *const p3;
+	//const int *p;
+		
+	return 0;
+}
+
+// Exercise 2.29
+int main()
+{
+	//int i;
+	//const int ic = 10;
+	//int *p1, *const p2 = &i;
+	//const int *const p3 = &i;
+	
+	//i = ic;
+	//p1 = p3;
+	//p1 = &ic;
+	//p3 = &ic;
+	//p2 = p1;
+	//ic = *p3;
+	
+	return 0;
+}
+
+
+
+
