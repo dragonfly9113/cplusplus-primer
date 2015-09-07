@@ -112,7 +112,7 @@ int ex2_18()
 }
 
 // Exercise 2.20
-int main()
+int ex2_20()
 {
 	int i = 42;
 	int *p1 = &i;
@@ -123,4 +123,19 @@ int main()
 	return 0;
 }
 
+// Exercise 2.27
+int ex2_27()
+{
+	//int i = -1;
+	//int i2 = 0;
+	//int i = -1, &r = 0;
+	//int *const p2 = &i2;
+	//const int i = -1, &r = 0;
+	//const int *const p3 = &i2;
+	//const int *p1 = &i2;
+	//const int &const r2;
+	//const int i2 = i, &r = i;
+	
+	return 0;
+}
 
