@@ -184,11 +184,31 @@ int ex2_31()
 }
 
 // Exercise 2.32
-int main()
+int ex2_32()
 {
 	//int null = 0, *p = null;
 	//int *p = 0;
-	int *p = nullptr;
+	//int *p = nullptr;
 	
 	return 0;
 }
+
+// Exercise 2.33
+int main()
+{
+	//int i = 0, &r = i;
+	//auto a = r;
+	
+	//const int ci = i, &cr = ci;
+	//auto b = ci;
+	//auto c = cr;
+	//auto d = &i;
+	//auto e = &ci;
+	//auto &g = ci;
+	
+	//a = 42; b = 42; c = 42;
+	//d = 42; e = 42; g = 42;
+		
+	return 0;
+}
+
