@@ -194,7 +194,7 @@ int ex2_32()
 }
 
 // Exercise 2.33
-int main()
+int ex2_33()
 {
 	//int i = 0, &r = i;
 	//auto a = r;
@@ -211,4 +211,20 @@ int main()
 		
 	return 0;
 }
+
+// Exercise 2.35
+int main()
+{
+	//const int i = 42;
+	//auto j = i; const auto &k = i; auto *p = &i;
+	//const auto j2 = i, &k2 = i;
+	
+	//std::cout << k2 << std::endl;
+	//k2 = 32;
+	//std::cout << k2 << std::endl;
+	
+	return 0;
+}
+
+
 
