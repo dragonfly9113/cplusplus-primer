@@ -213,7 +213,7 @@ int ex2_33()
 }
 
 // Exercise 2.35
-int main()
+int ex2_35()
 {
 	//const int i = 42;
 	//auto j = i; const auto &k = i; auto *p = &i;
@@ -226,5 +226,51 @@ int main()
 	return 0;
 }
 
+// Exercise 2.36
+int ex2_36()
+{
+	int a = 3, b = 4;
+	decltype(a) c = a;
+	decltype((b)) d = a;
+	++c;
+	++d;
+	
+	std::cout << a << std::endl;	// 4
+	std::cout << b << std::endl;	// 4
+	std::cout << c << std::endl;	// 4
+	std::cout << d << std::endl;	// 4
+	
+	return 0;
+}
 
+// Exercise 2.37
+int ex2_37()
+{
+	int a = 3, b = 4;
+	decltype(a) c = a;
+	decltype(a = b) d = a;
+	
+	std::cout << a << std::endl;	// 3
+	std::cout << b << std::endl;	// 4
+	std::cout << c << std::endl;	// 3
+	std::cout << d << std::endl;	// 3
+	
+	return 0;
+}
 
+// Exercise 2.38
+int main()
+{
+	int a = 3, b = 4;
+	// auto and decltype deduce the same type for c and d
+	auto c = a;
+	decltype(a) d = a;
+	
+	auto e = b;	// e has type int
+	decltype((b)) f = b; // f has type int&
+	
+	++c; ++d; ++e; ++f;
+	std::cout << b << std::endl;
+		
+	return 0;
+}
