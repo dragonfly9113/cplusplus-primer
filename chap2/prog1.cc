@@ -319,7 +319,7 @@ int ex2_41_1()
 	return 0;
 }
 
-int main()
+int ex2_41_2()
 {
 	Sales_data data1, data2;
 	
@@ -345,4 +345,88 @@ int main()
 		
 		return -1;
 	}
+}
+
+int ex2_41_3()
+{
+	Sales_data data;
+	Sales_data total;
+	
+	double price = 0;
+	std::cout << "Enter several book sale transactions with the same ISBN:" << std::endl;
+	while(std::cin >> data.bookNo >> data.units_sold >> price) {
+		data.revenue = data.units_sold * price;
+		// sum up and save to total
+		total.units_sold += data.units_sold;
+		total.revenue += data.revenue;
+	}
+	
+	std::cout << data.bookNo << " " << total.units_sold << " " << total.revenue << std::endl;
+
+	return 0;
+}
+
+// Exercise 2.41: Redo exercise section 1.5.2 using Sales_data
+int ex2_41_4()
+{
+	Sales_data data, currData;
+	int cnt;
+	double price = 0;
+	
+	std::cout << "Enter several book sale transactions:" << std::endl;
+	// read in the first transaction:
+	if(std::cin >> currData.bookNo >> currData.units_sold >> price) {
+		cnt = 1;
+		
+		// read in other transactions:
+		while(std::cin >> data.bookNo >> data.units_sold >> price) {
+			if(data.bookNo == currData.bookNo)	// if this transaction has the same isbn 
+				++cnt;
+			else {	// if this transaction has a different isbn
+				std::cout << "isbn: " << currData.bookNo << " transaction number: " << cnt << std::endl; 
+			
+				//currBook = book;
+				currData.bookNo = data.bookNo;
+				currData.units_sold = data.units_sold;
+				currData.revenue = data.revenue;
+				
+				cnt = 1;
+			}
+		}
+		
+		// no more transactions
+		std::cout << "isbn: " << currData.bookNo << " transaction number: " << cnt << std::endl; 		
+	}
+
+	return 0;
+}
+
+// Exercise 2.41: Redo exercise section 1.6 using Sales_data
+// To do: modify the following function to use Sales_data
+int main()
+{
+	Sales_item total;
+	
+	// read in the first record and see if it is valid:
+	if(std::cin >> total) {
+		Sales_item trans;
+		
+		while(std::cin >> trans) {
+			if(trans.isbn() == total.isbn()) // if this isbn is the same, update the total
+				total += trans;
+			else { 		// if this isbn is different, print out the last total and reset
+				std::cout << total << std::endl;
+				total = trans;
+			}
+		}
+		
+		// print the last trans:
+		std::cout << total << std::endl;
+	}
+	else {
+		std::cerr << "No data?!" << std::endl;
+		return -1;
+	}
+	
+	return 0;
 }
