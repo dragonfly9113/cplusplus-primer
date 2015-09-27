@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 // Exercise 2.4
 int ex2_4()
@@ -259,7 +260,7 @@ int ex2_37()
 }
 
 // Exercise 2.38
-int main()
+int ex2_38()
 {
 	int a = 3, b = 4;
 	// auto and decltype deduce the same type for c and d
@@ -273,4 +274,75 @@ int main()
 	std::cout << b << std::endl;
 		
 	return 0;
+}
+
+// Exercise 2.39
+int ex2_39()
+{
+	struct Foo {}; // semicolon is necessary for class definition
+	
+	return 0;
+}
+
+// Exercise 2.40
+int ex2_40()
+{
+	struct Sales_data {
+		std::string isbn;
+		unsigned units_sold;
+		double sale_price;
+	};
+	
+	return 0;
+}
+
+// Exercise 2.41
+struct Sales_data {
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+};
+
+// Exercise 2.41: Redo exercise section 1.5.1 using Sales_data
+int ex2_41_1()
+{
+	Sales_data data;
+	
+	double price = 0;
+	std::cout << "Read in a set of book transactions:" << std::endl;
+	while(std::cin >> data.bookNo >> data.units_sold >> price) {
+		data.revenue = data.units_sold * price;
+		// writing each transaction to the standard output:
+		std::cout << data.bookNo << " " << data.units_sold << " " << data.revenue << std::endl;
+	}
+
+	return 0;
+}
+
+int main()
+{
+	Sales_data data1, data2;
+	
+	double price = 0;
+	std::cout << "Enter two book sale transactions:" << std::endl;
+	// read in the first book transaction
+	std::cin >> data1.bookNo >> data1.units_sold >> price;
+	data1.revenue = data1.units_sold * price;
+	
+	// read in the second book transaction
+	std::cin >> data2.bookNo >> data2.units_sold >> price;
+	data2.revenue = data2.units_sold * price;
+		
+	if (data1.bookNo == data2.bookNo) {
+		unsigned totalCnt = data1.units_sold + data2.units_sold;
+		double totalRevenue = data1.revenue + data2.revenue;
+		
+		std::cout << data1.bookNo << " " << totalCnt << " " << totalRevenue << std::endl;
+		
+		return 0;
+	} else {
+		std::cerr << "Data must refer to the same ISBN" << std::endl;
+		
+		return -1;
+	}
 }
