@@ -405,23 +405,36 @@ int ex2_41_4()
 // To do: modify the following function to use Sales_data
 int main()
 {
-	Sales_item total;
+	Sales_data total;
+	double price = 0;
 	
 	// read in the first record and see if it is valid:
-	if(std::cin >> total) {
-		Sales_item trans;
+	if(std::cin >> total.bookNo >> total.units_sold >> price) {
+		total.revenue = total.units_sold * price;
+		Sales_data trans;
+		double avg_price;
 		
-		while(std::cin >> trans) {
-			if(trans.isbn() == total.isbn()) // if this isbn is the same, update the total
-				total += trans;
+		// read in other records
+		while(std::cin >> trans.bookNo >> trans.units_sold >> price) {
+			trans.revenue = trans.units_sold * price;
+			
+			if(trans.bookNo == total.bookNo) { // if this isbn is the same, update the total
+				total.units_sold += trans.units_sold;
+				total.revenue += trans.revenue;
+			}
 			else { 		// if this isbn is different, print out the last total and reset
-				std::cout << total << std::endl;
-				total = trans;
+				avg_price = (total.units_sold == 0) ? 0.0 : total.revenue / total.units_sold;
+				std::cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << avg_price << std::endl;
+				
+				total.bookNo = trans.bookNo;
+				total.units_sold = trans.units_sold;
+				total.revenue = trans.revenue;
 			}
 		}
 		
 		// print the last trans:
-		std::cout << total << std::endl;
+		avg_price = (total.units_sold == 0) ? 0.0 : total.revenue / total.units_sold;
+		std::cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << avg_price << std::endl;
 	}
 	else {
 		std::cerr << "No data?!" << std::endl;
