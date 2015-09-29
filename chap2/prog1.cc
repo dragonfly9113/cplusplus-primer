@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Sales_data.h"
 
 // Exercise 2.4
 int ex2_4()
@@ -296,13 +297,6 @@ int ex2_40()
 	return 0;
 }
 
-// Exercise 2.41
-struct Sales_data {
-	std::string bookNo;
-	unsigned units_sold = 0;
-	double revenue = 0.0;
-};
-
 // Exercise 2.41: Redo exercise section 1.5.1 using Sales_data
 int ex2_41_1()
 {
@@ -402,6 +396,7 @@ int ex2_41_4()
 }
 
 // Exercise 2.41: Redo exercise section 1.6 using Sales_data
+// Exercise 2.42: use my own version of Sales_data.h
 // To do: modify the following function to use Sales_data
 int main()
 {
@@ -443,3 +438,5 @@ int main()
 	
 	return 0;
 }
+
+
