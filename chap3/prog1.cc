@@ -135,7 +135,7 @@ int ex3_5()
 }
 
 // Exercise 3.6
-int main()
+int ex3_6()
 {
 	string str;
 	
@@ -149,3 +149,83 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 3.7
+int ex3_7()
+{
+	string str;
+	
+	cout << "Enter a string:" << endl;
+	getline(cin, str);
+	
+	//for (char c : str)
+	//	c = 'X';
+
+	cout << str << endl;
+	
+	return 0;
+}
+
+// Exercise 3.8
+int ex3_8()
+{
+	string str;
+	//decltype(str.size()) index = 0;
+	
+	cout << "Enter a string:" << endl;
+	getline(cin, str);
+
+	//for (char c : str)
+	//	c = 'X';
+	
+	//while (index != str.size()) {
+	//	str[index] = 'X';
+	//	++index;
+	//}
+	
+	for (decltype(str.size()) index = 0; index != str.size(); ++index) 
+		str[index] = 'X';
+	
+	cout << str << endl;
+	
+	return 0;
+}
+
+// Exercise 3.9
+int ex3_9()
+{
+	string s;
+	
+	cout << s[0] << endl;
+	
+	return 0;
+}
+
+// Exercise 3.10
+int ex3_10()
+{
+	string str, newStr;
+	
+	cout << "Enter a string:" << endl;
+	getline(cin, str);
+	
+	for (auto c : str)
+		if (!ispunct(c))
+			newStr += c;
+	
+	cout << newStr << endl;
+		
+	return 0;
+}
+
+// Exercise 3.11
+int main() 
+{
+	const string s = "Keep out!";
+	
+	for (auto &c : s)
+		cout << c << endl;
+	
+	return 0;
+}
+
