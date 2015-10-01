@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Sales_data.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
-using std::string;
+using std::string; using std::vector;
 
 // Exercise 3.1: rewrite programs in exercise section 1.4.1 with appropriate using declarations
 int ex3_1_1()
@@ -219,7 +220,7 @@ int ex3_10()
 }
 
 // Exercise 3.11
-int main() 
+int ex3_11() 
 {
 	const string s = "Keep out!";
 	
@@ -229,3 +230,42 @@ int main()
 	return 0;
 }
 
+// Exercise 3.12
+int ex3_12()
+{
+	vector<vector<int>> ivec;
+	
+	//vector<string> svec = ivec;
+	
+	vector<string> svec(10, "null");
+	
+	return 0;
+}
+
+// Exercise 3.14
+int ex3_15()
+{
+	int i;
+	vector<int> ivec;
+	
+	cout << "Enter a sequence of ints:" << endl;
+	while (cin >> i) {
+		ivec.push_back(i);
+	}
+
+	return 0;
+}
+
+// Exercise 3.15
+int main()
+{
+	string word;
+	vector<string> svec;
+	
+	cout << "Enter a sequence of stringS:" << endl;
+	while (cin >> word) {
+		svec.push_back(word);
+	}
+
+	return 0;
+}
