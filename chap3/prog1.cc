@@ -243,7 +243,7 @@ int ex3_12()
 }
 
 // Exercise 3.14
-int ex3_15()
+int ex3_14()
 {
 	int i;
 	vector<int> ivec;
@@ -257,7 +257,7 @@ int ex3_15()
 }
 
 // Exercise 3.15
-int main()
+int ex3_15()
 {
 	string word;
 	vector<string> svec;
@@ -267,5 +267,216 @@ int main()
 		svec.push_back(word);
 	}
 
+	return 0;
+}
+
+// Exercise 3.16
+int ex3_16()
+{
+	vector<int> v1;
+	vector<int> v2(10);
+	vector<int> v3(10, 42);
+	vector<int> v4{10};
+	vector<int> v5{10, 42};
+	vector<string> v6{10};
+	vector<string> v7{10, "hi"};
+
+	cout << "size of v5 is: " << v5.size() << endl;
+	for (auto elem : v5)
+		cout << elem << endl;
+
+	cout << "size of v6 is: " << v6.size() << endl;
+	for (auto elem : v6)
+		cout << elem << endl;
+
+	cout << "size of v7 is: " << v7.size() << endl;
+	for (auto elem : v7)
+		cout << elem << endl;
+	
+	return 0;
+}
+
+// Exercise 3.17
+int ex3_17()
+{
+	string word;
+	vector<string> svec;
+	
+	cout << "Enter a sequence of words:" << endl;
+	while (cin >> word) {
+		svec.push_back(word);
+	}
+	
+	// process the vector and change each word to uppercase.
+	for (auto &s : svec)
+		for (auto &c : s)
+			c = toupper(c);
+	
+	// print the transformed elements, eight words to a line.
+	unsigned count = 0;
+	for (auto s : svec) {
+		cout << s << " ";
+		if (++count == 8) {
+			cout << endl;
+			count = 0;
+		}
+	}	
+
+	return 0;
+}
+
+// Exercise 3.18
+int ex3_18()
+{
+	vector<int> ivec;
+	
+	ivec.push_back(42);
+	
+	return 0;
+}
+
+// Exercise 3.19
+int ex3_19()
+{
+	// Method 1:
+	//vector<int> ivec(10, 42);
+	// Method 2:
+	//vector<int> ivec{42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
+	// Method 3:
+	vector<int> ivec;
+	for (int i = 0; i != 10; ++i)
+		ivec.push_back(42);
+		
+	cout << "size of ivec is: " << ivec.size() << endl;
+	for (auto e : ivec)
+		cout << e << endl;
+
+	return 0;
+}
+
+// Exercise 3.20
+int ex3_20()
+{
+	int i;
+	vector<int> ivec;
+	
+	cout << "Enter a set of integers: " << endl;
+	while (cin >> i)
+		ivec.push_back(i);
+
+	//for (decltype(ivec.size()) index = 0; index < ivec.size(); index += 2) {
+	//	if (index == ivec.size() - 1)
+	//		cout << ivec[index] << endl;
+	//	else
+	//		cout << ivec[index] + ivec[index + 1] << endl;
+	//}
+
+	for (decltype(ivec.size()) index = 0; index != ivec.size() / 2; ++index) {
+		cout << ivec[index] + ivec[ivec.size() - index - 1] << endl;
+		// if there are odd number of elements in ivec, print out the middle element:
+		if (index == ivec.size()/2 - 1 && ivec.size() % 2 != 0)
+			cout << ivec[index + 1] << endl;
+	}
+	
+	return 0;
+}
+
+// Exercise 3.21
+int ex3_21()
+{
+	vector<int> v1;
+	vector<int> v2(10);
+	vector<int> v3(10, 42);
+	vector<int> v4{10};
+	vector<int> v5{10, 42};
+	vector<string> v6{10};
+	vector<string> v7{10, "hi"};
+
+	cout << "size of v5 is: " << v5.size() << endl;
+	for (auto it = v5.cbegin(); it != v5.cend(); ++it)
+		cout << *it << endl;
+
+	cout << "size of v6 is: " << v6.size() << endl;
+	for (auto it = v6.cbegin(); it != v6.cend(); ++it)
+		cout << *it << endl;
+
+	cout << "size of v7 is: " << v7.size() << endl;
+	for (auto it = v7.cbegin(); it != v7.cend(); ++it)
+		cout << *it << endl;
+	
+	return 0;
+}
+
+// Exercise 3.22
+int ex3_22()
+{
+	string str;
+	vector<string> text;
+	
+	// read into text:
+	cout << "Enter a text:" << endl;
+	while (getline(cin, str))
+		text.push_back(str);
+	
+	// change the elements in text that correspond to the first paragraph to all uppercase:
+	for (auto its = text.begin(); its != text.end() && !its->empty(); ++its)
+		for (auto itc = its->begin(); itc != its->end(); ++itc)
+			*itc = toupper(*itc);
+			
+	// print the contents of text:
+	for (auto it = text.cbegin(); it != text.cend(); ++it)
+		cout << *it << endl;
+	
+	return 0;
+}
+
+// Exercise 3.23
+int ex3_23()
+{
+	vector<int> ivec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	
+	for (auto it = ivec.begin(); it != ivec.end(); ++it)
+		*it = *it * 2;
+	
+	cout << "The size of ivec is: " << ivec.size() << endl;
+	for (auto it = ivec.cbegin(); it != ivec.cend(); ++it)
+		cout << *it << endl;
+	
+	return 0;
+}
+
+// Exercise 3.24
+int main()
+{
+	int i;
+	vector<int> ivec;
+	
+	cout << "Enter a set of integers: " << endl;
+	while (cin >> i)
+		ivec.push_back(i);
+
+	//for (auto it = ivec.cbegin(); it < ivec.cend(); it += 2) {
+	//	if (it == (ivec.cend() - 1))
+	//		cout << *it << endl;
+	//	else
+	//		cout << *it + *(it + 1) << endl;
+	//}
+	
+	//for (decltype(ivec.size()) index = 0; index != ivec.size() / 2; ++index) {
+	//	cout << ivec[index] + ivec[ivec.size() - index - 1] << endl;
+	//	// if there are odd number of elements in ivec, print out the middle element:
+	//	if (index == ivec.size()/2 - 1 && ivec.size() % 2 != 0)
+	//		cout << ivec[index + 1] << endl;
+	//}
+	
+	auto beg = ivec.cbegin(), end = ivec.cend();
+	auto mid = beg + (end - beg)/2;
+	for (auto it = beg; it != mid; ++it) {
+		auto ite = end - (it -beg) - 1;
+		cout << *it + *ite << endl;
+		if (2 == ite - it)	
+			cout << *(it + 1) << endl;
+	}
+	
 	return 0;
 }
