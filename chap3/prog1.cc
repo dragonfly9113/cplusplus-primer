@@ -4,7 +4,7 @@
 #include "Sales_data.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
-using std::string; using std::vector;
+using std::string; using std::vector; using std::begin; using std::end;
 
 // Exercise 3.1: rewrite programs in exercise section 1.4.1 with appropriate using declarations
 int ex3_1_1()
@@ -446,7 +446,7 @@ int ex3_23()
 }
 
 // Exercise 3.24
-int main()
+int ex3_24()
 {
 	int i;
 	vector<int> ivec;
@@ -480,3 +480,131 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 3.25: count the number of grades by clusters of ten: 0--9, 10--19, ..., 90--99, 100
+int ex3_25()
+{
+	vector<unsigned> scores(11, 0);	// 11 buckets, all initially 0
+	unsigned grade;
+	
+	cout << "Enter a set of scores (0 -- 100): " << endl;
+	while (cin >> grade) {
+		if (grade <= 100)
+			++(*(scores.begin() + grade/10));
+	}
+	
+	for (auto it = scores.cbegin(); it != scores.cend(); ++it)
+		cout << *it << " ";
+	
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 3.26
+int ex3_26()
+{
+	vector<int> ivec{1, 2 ,3, 4, 5, 6, 7, 8, 9, 10};
+	
+	auto beg = ivec.begin(), end = ivec.end();
+	auto mid = beg + (end - beg)/2;
+	//auto mid = (beg + end)/2;
+	
+	cout << *mid << endl;
+	
+	return 0;
+}
+
+// Exercise 3.27
+int ex3_27()
+{
+	//unsigned buf_size = 1024;
+	//int ia[txt_size()];
+	//char st[11] = "fundamental";
+		
+	return 0;
+}
+
+// Exercise 3.31
+int ex3_31()
+{
+	int arr[10] = {};
+	
+	for (int i = 0; i < 10; ++i)
+		arr[i] = i;
+	
+	for (auto i : arr)
+		cout << i << endl;
+	
+	return 0;
+}
+
+// Exercise 3.32
+int ex3_32()
+{
+	int ar1[10] = {};
+	int ar2[10] = {};
+	
+	for (int i = 0; i < 10; ++i)
+		ar1[i] = i;
+
+	// copy ar1 to ar2:
+	//ar2 = ar1;
+	for (int i = 0; i < 10; ++i)
+		ar2[i] = ar1[i];
+	
+	for (auto e : ar2)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 3.32: vector version
+int ex3_32v()
+{
+	vector<int> ivec1;
+	vector<int> ivec2;
+	
+	for (int i = 0; i < 10; ++i)
+		ivec1.push_back(i);
+	
+	ivec2 = ivec1;
+	
+	for (auto e : ivec2)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 3.33
+int ex3_33()
+{
+	unsigned scores[11];
+	unsigned grade;
+	
+	while (cin >> grade) {
+		if (grade <= 100)
+			++scores[grade/10];
+	}
+	
+	for (auto e : scores)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Section 3.5.3 examples
+int sec3_5_3()
+{
+	constexpr size_t sz = 5;
+	int ia[sz] = {1, 2, 3, 4, 5};
+	
+	int *pbeg = begin(ia);
+	int *pend = end(ia); 
+	
+	cout << *(pbeg + 2) << endl;
+	cout << *(pend - 1) << endl;
+	
+	return 0;
+}
+
