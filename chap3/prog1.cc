@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstring>
 #include "Sales_data.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
@@ -604,6 +605,126 @@ int sec3_5_3()
 	
 	cout << *(pbeg + 2) << endl;
 	cout << *(pend - 1) << endl;
+	
+	return 0;
+}
+
+// Exercise 3.35
+int ex3_35()
+{
+	constexpr size_t sz = 5;
+	int ia[sz] = {1, 2, 3, 4, 5};
+
+	for (auto e : ia)
+		cout << e << " ";
+	cout << endl;
+
+	int *p = ia;
+	int *pend = p + sz;
+	while (p < pend) {
+		*p = 0;
+		++p;
+	}
+
+	for (auto e : ia)
+		cout << e << " ";
+		
+	return 0;
+}
+
+// Exercise 3.36
+int ex3_36()
+{
+	int ia1[] = {1, 2, 3, 4, 5};
+	int ia2[] = {1, 2, 3, 4, 5};
+	
+	size_t sz1 = sizeof(ia1) / sizeof(ia1[0]);
+	size_t sz2 = sizeof(ia2) / sizeof(ia2[0]);
+	
+	if (sz1 == sz2) {
+		int *p1 = ia1;
+		int *pend1 = p1 + sz1;
+		int *p2 = ia2;
+		
+		while (p1 < pend1 && *p1 == *p2) {
+			++p1;
+			++p2;
+		}
+		
+		if (p1 == pend1)
+			cout << "Equal!" << endl;
+		else
+			cout << "Not Equal!" << endl;
+	} else {
+		cout << "Not Equal!" << endl;
+	}
+	
+	return 0;
+}
+
+// Exercise 3.36: vector version
+int ex3_36v()
+{
+	vector<int> ivec1{1, 2, 3, 4, 5};
+	vector<int> ivec2{1, 2, 20, 4, 5};
+	
+	if (ivec1 == ivec2)
+		cout << "Equal!" << endl;
+	else
+		cout << "Not Equal!" << endl;
+	
+	return 0;
+}
+
+// Exercise 3.39
+int ex3_39()
+{
+	string str1 = "good morning!";
+	string str2 = "good morning!";
+	
+	if (str1 == str2)
+		cout << "Equal!" << endl;
+	else if (str1 < str2)
+		cout << "str1 is less than str2." << endl;
+	else
+		cout << "str1 is larger than str2." << endl;
+	
+	return 0;
+}
+
+// Exercise 3.39: C-style char string version
+// Need to #include <cstring> to use strcmp() and other C-style string functions.
+int ex3_39c()
+{
+	const char str1[] = "Hello world!";
+	const char str2[] = "hello world!";
+	
+	if (strcmp(str1, str2) == 0)
+		cout << "Equal!" << endl;
+	else if (strcmp(str1, str2) < 0)
+		cout << "str1 is less than str2." << endl;
+	else
+		cout << "str1 is larger than str2." << endl;
+	
+	return 0;
+}
+
+// Exercise 3.40
+int main()
+{
+	const char str1[] = "Hello world!";
+	const char str2[] = "Good morning America!";
+
+	constexpr size_t sz = sizeof(str1)/sizeof(str1[0]) + sizeof(str2)/sizeof(str2[0]) + 1;
+	
+	cout << "sz = " << sz << endl;
+	
+	char totalStr[sz];
+	
+	strcpy(totalStr, str1);
+	strcat(totalStr, str2);
+	
+	cout << totalStr << endl;
 	
 	return 0;
 }
