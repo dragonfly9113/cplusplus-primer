@@ -771,3 +771,101 @@ int ex3_42()
 	return 0;
 }
 
+// Exercise 3.43
+int ex3_43()
+{
+	int ia[3][4] = {
+		{0, 1, 2, 3},
+		{4, 5, 6, 7},
+		{8, 9, 10, 11}
+	};	
+	
+	// Method 1: range for
+	//for (int (&e)[4] : ia) {
+	//	for (int i : e)
+	//		cout << i << " ";
+	//	cout << endl;
+	//}
+		
+	// Method 2: ordinary for loop with subscripts
+	//for (size_t row = 0; row != 3; ++row) {
+	//	for (size_t col = 0; col != 4; ++col)
+	//		cout << ia[row][col] << " ";
+	//	cout << endl;
+	
+	// Method 3: ordinary for loop with pointers
+	for (int (*p)[4] = ia; p != ia + 3; ++p) {
+		for (int *q = *p; q != *p + 4; ++q)
+			cout << *q << " ";
+		cout << endl;
+	}
+	
+	return 0;
+}
+
+// Exercise 3.44
+int ex3_44()
+{
+	int ia[3][4] = {
+		{0, 1, 2, 3},
+		{4, 5, 6, 7},
+		{8, 9, 10, 11}
+	};	
+	
+	using int_arrey = int[4];
+	
+	// Method 1: range for
+	//for (int_arrey &e : ia) {
+	//	for (int i : e)
+	//		cout << i << " ";
+	//	cout << endl;
+	//}
+		
+	// Method 2: ordinary for loop with subscripts
+	//for (size_t row = 0; row != 3; ++row) {
+	//	for (size_t col = 0; col != 4; ++col)
+	//		cout << ia[row][col] << " ";
+	//	cout << endl;
+	
+	// Method 3: ordinary for loop with pointers
+	for (int_arrey *p = ia; p != ia + 3; ++p) {
+		for (int *q = *p; q != *p + 4; ++q)
+			cout << *q << " ";
+		cout << endl;
+	}
+	
+	return 0;
+}
+
+// Exercise 3.45
+int main()
+{
+	int ia[3][4] = {
+		{0, 1, 2, 3},
+		{4, 5, 6, 7},
+		{8, 9, 10, 11}
+	};	
+	
+	// Method 1: range for
+	for (auto &e : ia) {
+		for (auto i : e)
+			cout << i << " ";
+		cout << endl;
+	}
+		
+	// Method 2: ordinary for loop with subscripts
+	//for (size_t row = 0; row != 3; ++row) {
+	//	for (size_t col = 0; col != 4; ++col)
+	//		cout << ia[row][col] << " ";
+	//	cout << endl;
+	
+	// Method 3: ordinary for loop with pointers
+	//for (auto p = ia; p != ia + 3; ++p) {
+	//	for (auto q = *p; q != *p + 4; ++q)
+	//		cout << *q << " ";
+	//	cout << endl;
+	//}
+	
+	return 0;
+}
+
