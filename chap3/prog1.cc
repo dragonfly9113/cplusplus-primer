@@ -710,7 +710,7 @@ int ex3_39c()
 }
 
 // Exercise 3.40
-int main()
+int ex3_40()
 {
 	const char str1[] = "Hello world!";
 	const char str2[] = "Good morning America!";
@@ -725,6 +725,48 @@ int main()
 	strcat(totalStr, str2);
 	
 	cout << totalStr << endl;
+	
+	return 0;
+}
+
+// Exercise 3.41
+int ex3_41()
+{
+	const int ia[] = {1, 2, 3, 4, 5, 6};
+	
+	vector<int> ivec(begin(ia), end(ia));
+	
+	for (auto e : ivec)
+		cout << e << endl;
+	
+	return 0;
+}
+
+// Exercise 3.42
+int ex3_42()
+{
+	const vector<int> ivec{1, 2, 3, 4, 5, 6};
+	
+	int ia[ivec.size()] = {};
+	
+	for (auto e : ia)
+		cout << e << " ";
+	cout << endl;
+	
+	// method 1:
+	//for (decltype(ivec.size()) i = 0; i != ivec.size(); ++i)
+	//	ia[i] = ivec[i];
+
+	// method 2:
+	int *p = ia;
+	for (auto it = ivec.cbegin(); it != ivec.cend(); ++it) {
+		*p = *it;
+		++p;
+	}
+
+	for (auto e : ia)
+		cout << e << " ";
+	cout << endl;
 	
 	return 0;
 }
