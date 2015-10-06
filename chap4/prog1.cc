@@ -105,3 +105,92 @@ int ex4_15()
 
 	return 0;
 }
+
+// Exercise 4.20
+int ex4_20()
+{
+	vector<string> svec{"Hello world!", "Good morning America!", "Hi there."};
+	
+	auto iter = svec.begin();
+	
+	//cout << *iter++ << endl;
+	//cout << (*iter)++ << endl;
+	//if (iter->empty())
+	//	cout << "empty!" << endl;
+	
+	//cout << ++*iter << endl;
+	if (iter++->empty())
+		cout << "empty!" << endl;
+	cout << *iter << endl;
+	
+	return 0;
+}
+
+// Exercise 4.21
+int ex4_21()
+{
+	vector<int> ivec{1, 2 ,3 ,4 ,5 ,6};
+
+	for (auto e : ivec)
+		cout << e << " ";
+	cout << endl;
+	
+	for (auto it = ivec.begin(); it != ivec.end(); ++it)
+		if (*it % 2 == 1)
+			*it = *it * 2;
+	
+	for (auto e : ivec)
+		cout << e << " ";
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 4.22
+int ex4_22()
+{
+	int grade;
+	string finalgrade;
+	
+	cout << "Enter an integer as grade: " << endl;
+	cin >> grade;
+	
+	// Method 1: only use conditional operators
+	//finalgrade = (grade > 90) ? "high pass" : (grade > 75) ? "pass" : (grade >= 60) ? "low pass" : "fail";
+	
+	// Method 2: only use if statements
+	if (grade > 90)
+		finalgrade = "high pass";
+	else if (grade > 75)
+		finalgrade = "pass";
+	else if (grade >=60)
+		finalgrade = "low pass";
+	else
+		finalgrade = "fail";
+	
+	cout << finalgrade << endl;
+	
+	return 0;
+}
+
+// Exercise 4.23
+int ex4_23()
+{
+	string s = "word";
+	string p1 = (s + s[s.size() -1] == "s") ? "" : "s";
+
+	cout << p1 << endl;
+	
+	return 0;
+}
+
+// Exercise 4.24
+int main()
+{
+	//int grade = 60;
+	
+	//string finalgrade = (grade > 90) ? "high pass" : (grade < 60);
+		
+	return 0;
+}
+
