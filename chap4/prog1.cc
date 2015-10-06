@@ -46,7 +46,7 @@ int ex4_9()
 }
 
 // Exercise 4.10
-int main()
+int ex4_10()
 {
 	int i;
 	
@@ -55,4 +55,20 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 4.11
+int main()
+{
+	int a, b, c, d;
+	cout << "Enter 4 integers: " << endl;
+	cin >> a >> b >> c >> d;
+	
+	if (a > b && b > c && c > d)
+		cout << "True!" << endl;
+	else
+		cout << "False!" << endl;
+	
+	return 0;
+}
+
 
