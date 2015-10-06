@@ -57,7 +57,7 @@ int ex4_10()
 }
 
 // Exercise 4.11
-int main()
+int ex4_11()
 {
 	int a, b, c, d;
 	cout << "Enter 4 integers: " << endl;
@@ -71,4 +71,37 @@ int main()
 	return 0;
 }
 
+// Exercise 4.12
+int ex4_12()
+{
+	int i, j, k;
+	cout << "Enter 3 integers i, j, k:" << endl;
+	cin >> i >> j >> k;
+	
+	if (i != (j < k))
+		cout << "if j < k, i != 1 OR if j >=k, i != 0" << endl;
+	
+	return 0;
+}
 
+// Exercise 4.13
+int ex4_13()
+{
+	int i; double d;
+	
+	//d = i = 3.5;
+	i = d = 3.5;
+	cout << "d = " << d << " i = " << i << endl;
+	
+	return 0;
+}
+
+// Exercise 4.15
+int ex4_15()
+{
+	//double dval; int ival; int *pi;
+	
+	//dval = ival = 0; pi = 0;
+
+	return 0;
+}
