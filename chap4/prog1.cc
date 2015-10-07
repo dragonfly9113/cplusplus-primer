@@ -185,7 +185,7 @@ int ex4_23()
 }
 
 // Exercise 4.24
-int main()
+int ex4_24()
 {
 	//int grade = 60;
 	
@@ -193,4 +193,31 @@ int main()
 		
 	return 0;
 }
+
+// Exercise 4.25
+int ex4_25()
+{
+	//cout << sizeof(int) << " " << sizeof(char) << endl;
+	int i = 0xFFFFE380;
+	
+	cout << (~'q' << 6) << endl;
+	
+	cout << i << endl;
+	
+	return 0;
+}
+
+// Exercise	4.27
+int main()
+{
+	unsigned long ul1 = 3, ul2 = 7;
+	
+	cout << (ul1 & ul2) << endl;	// 3
+	cout << (ul1 | ul2) << endl;	// 7
+	cout << (ul1 && ul2) << endl;	// 1	
+	cout << (ul1 || ul2) << endl;	// 1 
+	
+	return 0;
+}
+
 
