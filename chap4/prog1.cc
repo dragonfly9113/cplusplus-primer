@@ -208,7 +208,7 @@ int ex4_25()
 }
 
 // Exercise	4.27
-int main()
+int ex4_27()
 {
 	unsigned long ul1 = 3, ul2 = 7;
 	
@@ -220,4 +220,82 @@ int main()
 	return 0;
 }
 
+// Exercise 4.28
+int ex4_28()
+{
+	string s{"Hello World!"};
+	vector<int> ivec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	
+	cout << "Integer types: " << endl;
+	cout << sizeof(char) << endl;
+	cout << sizeof(bool) << endl;
+	cout << sizeof(int) << endl;
+	cout << sizeof(unsigned) << endl;
+	cout << sizeof(long) << endl;
+	cout << sizeof(long long) << endl;
+		
+	cout << "Float types: " << endl;
+	cout << sizeof(float) << endl;
+	cout << sizeof(double) << endl;
+	cout << sizeof(long double) << endl;
+	
+	cout << "string and vector: " << endl;
+	cout << sizeof(s) << endl;
+	cout << sizeof(ivec) << endl;
+	
+	return 0;
+}
 
+// Exercise 4.29
+int ex4_29()
+{
+	int x[10]; int *p = x;
+	
+	cout << sizeof(x)/sizeof(*x) << endl;	// 10
+	cout << sizeof(p)/sizeof(*p) << endl;	// 1
+	
+	return 0;
+}
+
+// Exercise 4.31
+int ex4_31()
+{
+	vector<int> ivec{1, 2, 3, 4, 5, 6};
+	
+	for (auto e : ivec)
+		cout << e << " ";
+	cout << endl;
+	
+	vector<int>::size_type cnt = ivec.size();
+	for (vector<int>::size_type ix = 0; ix != ivec.size(); ix++, cnt--)
+		ivec[ix] = cnt;
+
+	for (auto e : ivec)
+		cout << e << " ";
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 4.32
+int ex4_32()
+{
+	constexpr int size = 5;
+	int ia[size] = {1, 2, 3, 4, 5};
+	for (int *ptr = ia, ix = 0; ix != size && ptr != ia + size; ++ix, ++ptr)
+		cout << ia[ix] << endl;
+	
+	return 0;
+}
+
+// Exercise 4.33
+int main()
+{
+	int x = 5, y = 5;
+	
+	0 ? ++x, ++y : --x, --y;
+	
+	cout << x << " " << y << endl;
+	
+	return 0;
+}
