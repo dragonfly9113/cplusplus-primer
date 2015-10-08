@@ -289,7 +289,7 @@ int ex4_32()
 }
 
 // Exercise 4.33
-int main()
+int ex4_33()
 {
 	int x = 5, y = 5;
 	
@@ -299,3 +299,28 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 4.35
+int main()
+{
+	char cval; int ival = 5; unsigned int ui = 1;
+	float fval = 2.0; double dval;
+	
+	cval = 'a' + 3;
+	cout << cval << endl;
+	
+	fval = ui - ival * 1.0;	// -4.0
+	cout << fval << endl;
+	
+	dval = ui * fval; // -4.0
+	cout << dval << endl;
+	
+	cval = ival + fval + dval;
+	cout << cval << endl;
+	
+	return 0;
+}
+
+
+
+
