@@ -301,7 +301,7 @@ int ex4_33()
 }
 
 // Exercise 4.35
-int main()
+int ex4_35()
 {
 	char cval; int ival = 5; unsigned int ui = 1;
 	float fval = 2.0; double dval;
@@ -321,6 +321,41 @@ int main()
 	return 0;
 }
 
+// Exercise 4.36
+int ex4_36()
+{
+	int i = 2;
+	double d = 5.5;
+	
+	cout << (i *= static_cast<int>(d)) << endl;
+	
+	return 0;
+}
 
+// Exercise 4.37
+int ex4_37()
+{
+	//void *pv; double d; char *pc;
+	
+	//pv = static_cast<void*>(&d);
+
+	//pc = reinterpret_cast<char*>(pv);
+	
+	return 0;
+}
+
+// Exercise 4.38
+int main()
+{
+	int i = 2, j = 5;
+	
+	double slope = static_cast<double>(j/i);
+	
+	//double slope = static_cast<double>(j) / i;
+	
+	cout << slope << endl;
+	
+	return 0;
+}
 
 
