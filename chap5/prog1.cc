@@ -98,43 +98,158 @@ int ex5_10()
 	return 0;
 }
 
-// isspace example
-int example()
+// Exercise 5.11
+int ex5_11()
 {
-	char c;
-	int i = 0, sCnt = 0, tCnt = 0, nCnt = 0;
-	char str[] = "Example sentence to test		isspace\n";
-	while (str[i]) {
-		c = str[i];
-		if (c == ' ')
-			++sCnt;			
-		else if (c == '\t')
-			++tCnt;
-		else if (c == '\n')
-			++nCnt;
-		++i;
+	unsigned sCnt = 0;
+	string str;
+	
+	while (getline(cin, str)) {
+		for (auto ch : str)
+			if (isspace(ch))
+				++sCnt;
 	}
-
-	cout << sCnt << " " << tCnt << " " << nCnt << endl;
+	
+	cout << "Number of blank spaces: \t" << sCnt << endl;
 	
 	return 0;
 }
 
-// Exercise 5.11
-int main()
+// Exercise 5.12: version 1
+int ex5_12_v1()
 {
-	unsigned sCnt = 0;
-	char ch;
+	unsigned ffCnt = 0, flCnt = 0, fiCnt = 0;
+	string str;
+	bool first_f_Found = false;
 	
-	while (cin >> ch) {
-		if (ch == ' ')
-			++sCnt;
-		
-		cout << ch;
+	while (getline(cin, str)) {
+		for (auto ch : str) {
+			if (!first_f_Found && ch == 'f') {
+				first_f_Found = true;
+				continue;
+			}
+				
+			if (first_f_Found) {
+				if (ch == 'f')
+					++ffCnt;
+				else if (ch == 'l')
+					++flCnt;
+				else if (ch == 'i')
+					++fiCnt;
+				else
+					;	// do nothing here.
+				
+				first_f_Found = false;
+			}
+		}
 	}
 	
-	cout << endl;	
-	cout << "Number of spaces: \t" << sCnt << endl;
+	cout << "Number of sequence ff: \t" << ffCnt << '\n'
+		 << "Number of sequence fl: \t" << flCnt << '\n'
+		 << "Number of sequence fi: \t" << fiCnt << endl;
+	
+	return 0;
+}
+
+// Exercise 5.12: version 2
+int ex5_12_v2()
+{
+	unsigned ffCnt = 0, flCnt = 0, fiCnt = 0;
+	string str;
+	
+	while (getline(cin, str)) {
+		for (auto it = str.cbegin(); it != str.cend(); ++it) {
+			if (*it == 'f' && (it + 1 != str.cend())) {
+				if (*(it + 1) == 'f')
+					++ffCnt;
+				else if (*(it + 1) == 'l')
+					++flCnt;
+				else if (*(it + 1) == 'i')
+					++fiCnt;
+				else
+					continue;
+				
+				++it;
+			}
+		}
+	}
+	
+	cout << "Number of sequence ff: \t" << ffCnt << '\n'
+		 << "Number of sequence fl: \t" << flCnt << '\n'
+		 << "Number of sequence fi: \t" << fiCnt << endl;
+	
+	return 0;
+}
+
+// Exercise 5.13
+int ex5_13()
+{
+	// (a)
+	//unsigned aCnt = 0, eCnt = 0, iouCnt = 0;
+	//char ch = next_text();
+	//switch (ch) {
+	//	case 'a': 
+	//		aCnt++;
+	//		break;
+	//	case 'e':
+	//		eCnt++;
+	//		break;
+	//	default:
+	//		iouCnt++;
+	//		break;
+	//}
+	
+	// (b)
+	//unsigned index = 2;
+	//vector<unsigned> ivec{0, 0, 0, 0, 0}; 
+	
+	//switch (index) {
+	//	case 1:
+	//	{
+	//		int ix = 0;
+	//		ivec[ix] = index;
+	//		break;
+	//	}
+	//	default:
+	//	{
+	//		int ix = ivec.size() - 1;
+	//		ivec[ix] = index;
+	//	}
+	//}
+
+	// (c)
+	//unsigned evenCnt = 0, oddCnt = 0;
+	//int digit = 12 % 10;
+	//switch (digit) {
+	//	case 1: case 3: case 5: case 7: case 9:
+	//		oddCnt++;
+	//		break;
+	//	case 2: case 4: case 6: case 8: case 10:
+	//		evenCnt++;
+	//		break;
+	//}
+	//cout << "evenCnt = " << evenCnt << "	oddCnt = " << oddCnt << endl;
+	
+	// (d)
+	constexpr unsigned ival = 512, jval = 1024, kval = 4096;
+	unsigned bufsize;
+	unsigned swt = 1024;
+	switch (swt) {
+		case ival:
+			bufsize = ival * sizeof(int);
+			break;
+		case jval:
+			bufsize = jval * sizeof(int);
+			break;
+		case kval:
+			bufsize = kval * sizeof(int);
+			break;
+		default:
+			bufsize = 0;
+			break;
+	}
+	
+	cout << bufsize << endl;
 	
 	return 0;
 }
