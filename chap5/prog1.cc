@@ -254,3 +254,118 @@ int ex5_13()
 	return 0;
 }
 
+// Exercise 5.14
+int ex5_14()
+{
+	string word, currWord, maxWord;
+	unsigned dupCnt = 1;
+	unsigned maxDupCnt = 1;
+	
+	cout << "Enter a sequence of words: " << endl;
+	// read in the first word:
+	cin >> currWord; maxWord = currWord;
+	if (currWord.empty())
+		return 0;
+
+	// keep reading in other words:
+	while (cin >> word) {
+		if (word == currWord) {
+			++dupCnt;
+			if (dupCnt > maxDupCnt) {
+				maxDupCnt = dupCnt;
+				maxWord = currWord;
+			}
+		}
+		else {
+			dupCnt = 1;
+			currWord = word;
+		}
+	}
+
+	cout << "The word: " << maxWord << " occured " << maxDupCnt << " times." << endl;
+	
+	return 0;
+}
+
+// Exercise 5.15
+int ex5_15()
+{
+	// (a)
+	int sz = 10;
+	//int ix = 0;
+	//for ( ; ix != sz; ++ix)
+	//	;
+	
+	//if (ix != sz)
+	//	;
+	
+	// (b)
+	//int ix;
+	//for (ix = 0; ix != sz; ++ix)
+	//	;
+	
+	// (c)
+	for (int ix = 0; ix != sz; ++ix /*, ++sz*/)
+		;
+	
+	
+	//cout << ix << endl;
+	
+	return 0;
+}
+
+// Exercise 5.16
+int ex5_16()
+{
+	// idiomatic use of while loop
+	//char ch;
+	//while (cin >> ch)
+	//	cout << ch;
+	//cout << endl;
+	
+	// idiomatic use of for loop
+	//string str = "Hello world!";
+	//for (decltype(str.size()) i = 0; i != str.size(); ++i)
+	//	cout << str[i];
+	//cout << endl;
+	
+	// rewrite the first loop using for loop:
+	//char ch;
+	//for (; cin >> ch; )
+	//	cout << ch;
+	//cout << endl;
+
+	// rewrite the second loop using while loop:
+	string str = "Hello world!";
+	decltype(str.size()) i = 0;
+	while (i != str.size()) {
+		cout << str[i];
+		++i;
+	}
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 5.17
+int main()
+{
+	vector<int> ivec1{0, 1, 1, 2};
+	vector<int> ivec2{0, 1, 1, 2, 4, 7, 8};
+	auto sz1 = ivec1.size(); auto sz2 = ivec2.size();
+	auto cmpLen = (sz1 <= sz2) ? sz1 : sz2;
+	
+	decltype(sz1) ix = 0;
+	while (ix != cmpLen && ivec1[ix] == ivec2[ix])
+		++ix;
+	
+	if (ix == cmpLen)
+		cout << "True!" << endl;
+	else
+		cout << "False!" << endl;
+	
+	return 0;
+}
+
+
+
