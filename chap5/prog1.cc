@@ -348,7 +348,7 @@ int ex5_16()
 }
 
 // Exercise 5.17
-int main()
+int ex5_17()
 {
 	vector<int> ivec1{0, 1, 1, 2};
 	vector<int> ivec2{0, 1, 1, 2, 4, 7, 8};
@@ -367,5 +367,58 @@ int main()
 	return 0;
 }
 
+// Exercise 5.18
+int ex5_18()
+{
+	int ival = 0;
+	
+	do {
+		cout << ival << endl;
+	} while (++ival != 10);
+	
+	return 0;
+}
 
+// Exercise 5.19
+int ex5_19()
+{
+	string str1, str2;
+	
+	do {
+		cout << "Enter two strings: " << endl;
+		cin >> str1 >> str2;
+		
+		if (str1.size() < str2.size())
+			cout << "str1 is less than str2!" << endl;
+		else
+			cout << "str2 is less than str1!" << endl;
+		
+	} while(cin);
+	
+	return 0;
+}
+
+// Exercise 5.20
+int main()
+{
+	string word, currWord;
+
+	cout << "Enter a sequence of words: " << endl;
+	// read in the first word:
+	cin >> currWord;
+	
+	// keep reading the other words:
+	while (cin >> word) {
+		if (word == currWord) {
+			cout << word << endl;
+			break;
+		}
+		else {
+			cout << "No word was repeated!" << endl;
+			currWord = word;
+		}
+	}
+	
+	return 0;
+}
 
