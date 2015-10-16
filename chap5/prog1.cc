@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
 using std::string; using std::vector; using std::begin; using std::end;
+using std::runtime_error;
 
 // Exercise 5.3
 int ex5_3()
@@ -399,7 +401,7 @@ int ex5_19()
 }
 
 // Exercise 5.20
-int main()
+int ex5_20()
 {
 	string word, currWord;
 
@@ -421,4 +423,94 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 5.21
+int ex5_21()
+{
+	string word, currWord;
+
+	cout << "Enter a sequence of words: " << endl;
+	// read in the first word:
+	cin >> currWord;
+	
+	// keep reading the other words:
+	while (cin >> word) {
+		// if the word doesn't start with an uppercase letter, don't compare, move on to the next word:
+		if (!isupper(word[0])) {
+			currWord = word;
+			continue;
+		}
+		
+		if (word == currWord) {
+			cout << word << endl;
+			break;
+		}
+		else {
+			cout << "No word was repeated!" << endl;
+			currWord = word;
+		}
+	}
+	
+	return 0;
+}
+
+// Exercise 5.22
+int ex5_22()
+{
+	int sz;
+	
+	while (cin >> sz) {
+		if (sz > 0)
+			break;
+	}
+	
+	return 0;
+}
+
+// Exercise 5.23, 5.24
+int ex5_24()
+{
+	int ival1, ival2;
+	
+	cout << "Enter two integers: " << endl;
+	cin >> ival1 >> ival2;
+	
+	// first check if the second integer is 0 or not
+	if (ival2 == 0)
+		throw runtime_error("ival2 must not be zero!");
+		
+	// if we are still here, ival2 is not zero
+	cout << ival1 / ival2 << endl;
+	
+	return 0;
+}
+
+// Exercise 5.25
+int main()
+{
+	int ival1, ival2;
+	
+	cout << "Enter two integers: " << endl;
+	while (cin >> ival1 >> ival2) {
+		try {
+			// first check if the second integer is 0 or not
+			if (ival2 == 0)
+				throw runtime_error("ival2 must not be zero!");
+				
+			// if we are still here, ival2 is not zero
+			cout << ival1 / ival2 << endl;
+		} catch (runtime_error err) {
+			// remind the user that the second integer must not be zero and prompt for another pair of input_iterator
+			cout << err.what() << "\nTry again? Enter y or n" << endl;
+			
+			char c;
+			cin >> c;
+			if (!cin || c == 'n')
+				break;
+		}
+	}
+	
+	return 0;
+}
+
 
