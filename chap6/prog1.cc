@@ -57,13 +57,23 @@ int seq_num()
 	return seq++;
 }
 
+// Exercise 6.10
+void swap_value(int *p1, int *p2)
+{
+	int temp;
+	
+	temp = *p1;
+	*p1 = *p2;
+	*p2 = temp;
+}
+
 int main()
 {
-	cout << seq_num() << endl;
-	cout << seq_num() << endl;
-	cout << seq_num() << endl;
-	cout << seq_num() << endl;
-	cout << seq_num() << endl;
+	int ival1 = 11, ival2 = 22;
+
+	cout << ival1 << "\t" << ival2 << endl;	
+	swap_value(&ival1, &ival2);
+	cout << ival1 << "\t" << ival2 << endl;
 	
 	return 0;
 }
