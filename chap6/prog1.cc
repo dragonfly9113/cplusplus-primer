@@ -67,15 +67,56 @@ void swap_value(int *p1, int *p2)
 	*p2 = temp;
 }
 
+// Exercise 6.11
+void reset(int &ival)
+{
+	ival = 0;
+}
+
+// Exercise 6.12
+void swap_value_v2(int &i1, int &i2)
+{
+	int temp;
+
+	temp = i1;
+	i1 = i2;
+	i2 = temp;
+}
+
+// Exercise 6.17
+bool has_capital_letters(const string &s)
+{
+	bool ret = false;
+	
+	for (auto c : s)
+		if (isupper(c)) {
+			ret = true;
+			break;
+		}
+
+	return ret;
+}
+
+void to_lowercase(string &s)
+{
+	for (auto &c : s)
+		c = tolower(c);
+}
+
 int main()
 {
-	int ival1 = 11, ival2 = 22;
-
-	cout << ival1 << "\t" << ival2 << endl;	
-	swap_value(&ival1, &ival2);
-	cout << ival1 << "\t" << ival2 << endl;
+	string str;
 	
+	cout << "Enter a string: " << endl;
+	getline(cin, str);
+	
+	cout << has_capital_letters(str) << endl;
+	to_lowercase(str);
+	cout << str << endl;
+		
 	return 0;
 }
+
+
 
 
