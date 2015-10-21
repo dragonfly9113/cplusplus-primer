@@ -103,20 +103,53 @@ void to_lowercase(string &s)
 		c = tolower(c);
 }
 
-int main()
+// Exercise 6.21
+int larger_int(int i1, const int *pi2)
 {
-	string str;
+	return (i1 > *pi2) ? i1 : *pi2;
+}
+
+// Exercise 6.22: pointer to pointer version
+void swap_pointers(int **p1, int **p2)
+{
+	int *tmp;
 	
-	cout << "Enter a string: " << endl;
-	getline(cin, str);
+	tmp = *p1;
+	*p1 = *p2;
+	*p2 = tmp;
+}
+
+int main_swap_pointers()
+{
+	int ival1 = 11, ival2 = 22;
+	int *ip1 = &ival1, *ip2 = &ival2;
 	
-	cout << has_capital_letters(str) << endl;
-	to_lowercase(str);
-	cout << str << endl;
+	cout << *ip1 << "\t" << *ip2 << endl;
+	swap_pointers(&ip1, &ip2);
+	cout << *ip1 << "\t" << *ip2 << endl;
 		
 	return 0;
 }
 
+// Exercise 6.22: reference to pointer version - easier to understand
+void swap_pointers_v2(int *&p1, int *&p2)
+{
+	int *tmp;
+	
+	tmp = p1;
+	p1 = p2;
+	p2 = tmp;
+}
 
-
+int main_swap_pointers_v2()
+{
+	int ival1 = 11, ival2 = 22;
+	int *ip1 = &ival1, *ip2 = &ival2;
+	
+	cout << *ip1 << "\t" << *ip2 << endl;
+	swap_pointers_v2(ip1, ip2);
+	cout << *ip1 << "\t" << *ip2 << endl;
+		
+	return 0;
+}
 
