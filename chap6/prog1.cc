@@ -153,3 +153,56 @@ int main_swap_pointers_v2()
 	return 0;
 }
 
+// Exercise 6.23
+// Using a marker to specify the extent of an array: for an array of intS, there is no obvious end-marker value.
+// Here I just use -1 as end marker which is NOT a good idea.
+void print_1(int i, const int *j)
+{
+	cout << "i = " << i << endl;
+	
+	if (j)
+		while (*j != -9999)
+			cout << *j++ << " ";
+}
+
+// Using the standard library conventions
+void print_2(int i, const int *beg, const int *end)
+{
+	cout << "i = " << i << endl;
+
+	while (beg != end)
+		cout << *beg++ << " ";
+}
+
+// Explicitly passing a size parameter
+void print_3(const int iarr[], size_t sz)
+{
+	for (size_t i = 0; i != sz; ++i)
+		cout << iarr[i] << " ";
+}
+
+// Parameter is a reference to an array
+void print_4(int (&ia)[10])
+{
+	for (auto e : ia)
+		cout << e << " ";
+}
+
+// Exercise 6.24
+void print_6_24(const int ia[10])
+{
+	for (size_t i = 0; i != 10; ++i)
+		cout << ia[i] << endl;
+}
+
+int main()
+{
+	int k[] = {0, 1, 2, 3, 4, 5, 6};
+	
+	print(k);
+	
+	return 0;
+}
+
+
+
