@@ -7,6 +7,7 @@
 using std::cin; using std::cout; using std::endl; using std::cerr;
 using std::string; using std::vector; using std::begin; using std::end;
 using std::runtime_error;
+using std::initializer_list;
 
 // Exercise 6.2
 int f2(int i) 
@@ -195,14 +196,48 @@ void print_6_24(const int ia[10])
 		cout << ia[i] << endl;
 }
 
-int main()
+// Exercise 6.25
+int ex6_25(int argc, char *argv[])
 {
-	int k[] = {0, 1, 2, 3, 4, 5, 6};
+	string arg1, arg2, str;
 	
-	print(k);
+	if (argc == 3) {
+		arg1 = argv[1];
+		arg2 = argv[2];
+		str = arg1 + arg2;
+	}
+		
+	cout << str << endl;
 	
 	return 0;
 }
 
+// Exercise 6.26
+int ex6_26(int argc, char *argv[])
+{
+	cout << "Arguments passed in are: " << endl;
+	for (int i = 1; i != argc; ++i)
+		cout << argv[i] << " ";
+	
+	return 0;
+}
+
+// Exercise 6.27
+int sum_up_arguments(initializer_list<int> il)
+{
+	int ret = 0;
+	
+	for (auto e : il)
+		ret += e;
+	
+	return ret;
+}
+
+int main()
+{
+	cout << sum_up_arguments({10, 20, 25}) << endl;
+	
+	return 0;
+}
 
 
