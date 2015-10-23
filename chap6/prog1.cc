@@ -233,11 +233,103 @@ int sum_up_arguments(initializer_list<int> il)
 	return ret;
 }
 
-int main()
+int main_6_27()
 {
 	cout << sum_up_arguments({10, 20, 25}) << endl;
 	
 	return 0;
 }
 
+// Exercise 6.30
+bool str_subrange(const string &str1, const string &str2)
+{
+	if (str1.size() == str2.size())
+		return str1 == str2;
+	
+	auto size = (str1.size() < str2.size()) ? str1.size() : str2.size();
+	for (decltype(size) i = 0; i != size; ++i)
+		if (str1[i] != str2[i])
+			//return; 	// error #1: no return type
+			return false;
+	
+	// error #2: control might flow off the end of the function without a return.
+	// compiler might not detect this error
+	return true;
+}
+
+// Exercise 6.32
+int &get(int *arry, int index) { return arry[index]; }
+
+int main_6_32()
+{
+	int ia[10];
+
+	for (auto e : ia)
+		cout << e << " ";
+	cout << endl;
+	
+	for (int i = 0; i != 10; ++i)
+		get(ia, i) = i;
+
+	for (auto e : ia)
+		cout << e << " ";
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 6.33
+void print_vec(vector<int> vec)
+{
+	if (vec.size() > 0) {
+		cout << *vec.cbegin() << endl;
+		vec.erase(vec.cbegin());
+		print_vec(vec);
+	}
+	else
+		return;
+}
+
+int main_6_33()
+{
+	vector<int> ivec{0, 1, 2, 3, 4, 5};
+	
+	print_vec(ivec);
+	
+	cout << "After print_vec(), ivec becomes: " << endl;
+	for (auto e : ivec)
+		cout << e << " ";
+
+	return 0;
+}
+
+// Exercise 6.34
+int factorial(int val)
+{
+	if (val != 0)
+		return factorial(val -1) * val;
+	return 1;
+}
+
+int main_6_34()
+{
+	cout << factorial(-1) << endl;
+	
+	return 0;
+}
+
+// Exercise 6.35
+int factorial_v2(int val)
+{
+	if (val > 1)
+		return factorial_v2(val--) * val;
+	return 1;
+}
+
+int main()
+{
+	cout << factorial_v2(5) << endl;
+	
+	return 0;
+}
 
