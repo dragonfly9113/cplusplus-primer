@@ -322,14 +322,53 @@ int main_6_34()
 int factorial_v2(int val)
 {
 	if (val > 1)
-		return factorial_v2(val--) * val;
+		//return factorial_v2(--val) * val;
+		return factorial_v2(val - 1) * val;
 	return 1;
+}
+
+int main_6_35()
+{
+	cout << factorial_v2(5) << endl;
+	
+	return 0;
+}
+
+// Exercise 6.36
+string (&arrRef(int i1, int i2))[10];
+
+// Exercise 6.37
+// usig a type alias
+//using arrT = string[10];	// arrT is an alias for the type array of ten strings
+//arrT &arrRef(int i);
+
+// using a trailing return type
+//auto arrRef(int i) -> string(&)[10];
+
+// using decltype
+//string strArr[10];
+//decltype(strArr) &arrRef(int i);
+
+// Exercise 6.38
+int odd[] = {1, 3, 5, 7, 9};
+int even[] = {0, 2, 4, 6, 8};
+decltype(odd) &arrRef(int i)
+{
+	return (i % 2) ? odd : even; // return a reference to the array of 5 integers
 }
 
 int main()
 {
-	cout << factorial_v2(5) << endl;
+	for ( auto &e : arrRef(0))
+		e *= 2;
+		
+	for (auto e : odd)
+		cout << e << " ";
+	cout << endl;
 	
+	for (auto e :even)
+		cout << e << " ";
+		
 	return 0;
 }
 
