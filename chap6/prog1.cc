@@ -357,7 +357,7 @@ decltype(odd) &arrRef(int i)
 	return (i % 2) ? odd : even; // return a reference to the array of 5 integers
 }
 
-int main()
+int main_6_38()
 {
 	for ( auto &e : arrRef(0))
 		e *= 2;
@@ -369,6 +369,22 @@ int main()
 	for (auto e :even)
 		cout << e << " ";
 		
+	return 0;
+}
+
+// Exercise 6.39
+int calc(int, int);
+int calc(const int, const int);
+
+//int get();
+//double get();
+
+int *reset(int *);
+double *reset(double *);
+
+int main()
+{
+	
 	return 0;
 }
 
