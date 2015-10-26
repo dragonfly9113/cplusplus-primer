@@ -379,11 +379,28 @@ int calc(const int, const int);
 //int get();
 //double get();
 
-int *reset(int *);
-double *reset(double *);
+//int *reset(int *);
+//double *reset(double *);
+
+// Exercise 6.40
+//int ff(int a, int b, int c = 0);
+//char *init(int ht = 24, int wd, char bckgrnd);
+
+// Exercise 6.41
+int init_1(int ht, int wd = 80, char bckgrnd = ' ')
+{
+	cout << ht << endl;
+	cout << wd << endl;
+	cout << bckgrnd << endl;
+	
+	return 0;
+}
 
 int main()
 {
+	init_1(40);
+	init_1(24, 10);
+	init_1(14, '*');
 	
 	return 0;
 }
