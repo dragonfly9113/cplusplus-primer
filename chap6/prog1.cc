@@ -396,7 +396,7 @@ int init_1(int ht, int wd = 80, char bckgrnd = ' ')
 	return 0;
 }
 
-int main()
+int main_6_41()
 {
 	init_1(40);
 	init_1(24, 10);
@@ -405,3 +405,54 @@ int main()
 	return 0;
 }
 
+// Exercise 6.42
+string make_plural(size_t ctr, const string &word, const string &ending = "s")
+{
+	return (ctr > 1) ? word + ending : word;
+}
+
+int main_6_42()
+{
+	size_t ctr = 2;
+	string word = "Success";
+	string ending = "es";
+	
+	//cout << make_plural(ctr, word, ending) << endl;
+	cout << make_plural(ctr, word) << endl;
+
+	word = "Failure";
+	ending = "s";
+	
+	//cout << make_plural(ctr, word, ending) << endl;
+	cout << make_plural(ctr, word) << endl;
+	
+	return 0;
+}
+
+// Exercise 6.44
+inline bool isShorter(const string &s1, const string &s2)
+{
+	return s1.size() < s2.size();
+}
+
+int main_6_44()
+{
+	string str1 = "Hello world!";
+	string str2 = "Good morning America!";
+	
+	cout << isShorter(str1, str2) << endl;
+	
+	return 0;
+}
+
+// Exercise 6.46
+//constexpr bool isShorter_1(const string &s1, const string &s2)
+//{
+//	return s1.size() < s2.size();
+//}
+
+int main()
+{
+	
+	return 0;
+}
