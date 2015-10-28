@@ -2,12 +2,15 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <cassert>
 #include "Chapter6.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
 using std::string; using std::vector; using std::begin; using std::end;
 using std::runtime_error;
 using std::initializer_list;
+
+#define NDEBUG
 
 // Exercise 6.2
 int f2(int i) 
@@ -451,8 +454,42 @@ int main_6_44()
 //	return s1.size() < s2.size();
 //}
 
-int main()
+// Exercise 6.47
+void print_vec_dbg(vector<int> vec)
 {
+	if (vec.size() > 0) {
+		cout << *vec.cbegin() << endl;
+#ifndef NDEBUG		
+		cout << "vec size: " << vec.size() << endl;
+#endif
+		vec.erase(vec.cbegin());
+		print_vec_dbg(vec);
+	}
+	else
+		return;
+}
+
+int main_6_47()
+{
+	vector<int> ivec{0, 1, 2, 3, 4, 5};
+
+	print_vec_dbg(ivec);
+	cout << "After print_vec(), ivec becomes: " << endl;
+	for (auto e : ivec)
+		cout << e << " ";
+
+	return 0;
+}
+
+// Exercise 6.48
+int main_6_48()
+{
+	string s, sought = "Hello";
+	
+	while (cin >> s && s != sought) {} // empty body
+	assert(cin);
 	
 	return 0;
 }
+
+
