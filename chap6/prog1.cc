@@ -513,12 +513,77 @@ void f(double, double = 3.14)
 	cout << "f(double, double)" << endl;
 }
 
-int main()
+int main_6_51()
 {
 	//f(2.56, 42);
 	//f(42);
 	//f(42, 0);
 	f(2.56, 3.14);
+	
+	return 0;
+}
+
+// Exercise 6.52
+void manip(int, int)
+{
+	cout << "manip(int, int)" << endl;
+}
+
+int main_6_52()
+{
+	double dobj = 3.14;
+	
+	manip('a', 'z');
+	manip(55.4, dobj);
+	
+	return 0;
+}
+
+// Exercise 6.53
+int calc_1(int&, int&)
+{
+	cout << "int calc_1(int&, int&)" << endl;
+	return 0;
+}
+
+int calc_1(const int&, const int&)
+{
+	cout << "int calc_1(const int&, const int&)" << endl;
+	return 0;
+}
+
+int calc_2(char*, char*)
+{
+	cout << "int calc_2(char*, char*)" << endl;
+	return 0;
+}
+
+int calc_2(const char*, const char*)
+{
+	cout << "int calc_2(const char*, const char*)" << endl;
+	return 0;
+}
+
+int calc_3(char*, char*)
+{
+	cout << "int calc_3(char*, char*)" << endl;
+	return 0;
+}
+
+int calc_3(char* const, char* const)
+{
+	cout << "int calc_3(char* const, char* const)" << endl;
+	return 0;
+}
+
+int main()
+{
+	//const int i1 = 0, i2 = 0;
+	char c1 = 'a', c2 = 'b';
+	
+	//calc_1(i1, i2);
+	//calc_2(&c1, &c2);
+	calc_3(&c1, &c2);
 	
 	return 0;
 }
