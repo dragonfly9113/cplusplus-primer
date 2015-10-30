@@ -570,13 +570,13 @@ int calc_3(char*, char*)
 	return 0;
 }
 
-int calc_3(char* const, char* const)
-{
-	cout << "int calc_3(char* const, char* const)" << endl;
-	return 0;
-}
+//int calc_3(char* const, char* const)
+//{
+//	cout << "int calc_3(char* const, char* const)" << endl;
+//	return 0;
+//}
 
-int main()
+int main_6_53()
 {
 	//const int i1 = 0, i2 = 0;
 	char c1 = 'a', c2 = 'b';
@@ -585,5 +585,72 @@ int main()
 	//calc_2(&c1, &c2);
 	calc_3(&c1, &c2);
 	
+	return 0;
+}
+
+// Exercise 6.54
+int ff1(int i1, int i2)
+{
+	cout << "int ff1(int, int): " << i1 << " " << i2 << endl;
+	return 0;
+}
+
+int ff2(int i1, int i2)
+{
+	cout << "int ff2(int, int): " << i1 << " " << i2 << endl;
+	return 0;
+}
+
+int main_6_54()
+{
+	// using decltype - seems like the easiest version:
+	vector<decltype(ff1) *> ff_pointer_vec_1{ff1, ff2};
+	ff_pointer_vec_1[0](11, 22);
+	ff_pointer_vec_1[1](33, 44);
+	cout << endl;
+	
+	// using plainly declared function pointer type:
+	vector<int(*)(int, int)> ff_pointer_vec_2{ff1, ff2};
+	ff_pointer_vec_2[0](55, 66);
+	ff_pointer_vec_2[1](77, 88);
+	cout << endl;
+
+	// using type alias:
+	using PF = int(*)(int, int);	// PF is an alias for function pointer type
+	vector<PF> ff_pointer_vec_3{ff1, ff2};
+	ff_pointer_vec_3[0](1, 2);
+	ff_pointer_vec_3[1](3, 4);
+	
+	return 0;
+}
+
+// Exercise 6.55, 6.56
+int ff_add(int i1, int i2)
+{
+	return i1 + i2;
+}
+
+int ff_sub(int i1, int i2)
+{
+	return i1 - i2;
+}
+
+int ff_mul(int i1, int i2)
+{
+	return i1 * i2;
+}
+
+int ff_div(int i1, int i2)
+{
+	return i1 / i2;
+}
+
+int main()
+{
+	vector<decltype(ff_add) *> ff_vec = {ff_add, ff_sub, ff_mul, ff_div};
+
+	for (auto e : ff_vec)
+		cout << e(1, 2) << endl;
+
 	return 0;
 }
