@@ -14,7 +14,7 @@ using std::initializer_list;
 
 // Exercise 2.41: Redo exercise section 1.6 using Sales_data
 // Exercise 2.42: use my own version of Sales_data.h
-// To do: modify the following function to use Sales_data
+// Exercise 7.1
 int main()
 {
 	Sales_data total;
