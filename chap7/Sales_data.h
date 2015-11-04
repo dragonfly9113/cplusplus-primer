@@ -1,7 +1,25 @@
 #ifndef SALES_DATA_H
 #define SALES_DATA_H
+
+// Exercise 7.12: declare these two here in order for constructor Sales_data(std::istream &is) to use non-member function read()
+// inside Sales_data class body.
+struct Sales_data;
+std::istream &read(std::istream &, Sales_data &);
+
 // Exercise 7.2
 struct Sales_data {
+	// Exercise 7.11
+	// new constructors:
+	Sales_data() = default;
+	Sales_data(const std::string &s) : bookNo(s) {}
+	Sales_data(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) {}
+	//Sales_data(std::istream &);	
+	// Exercise 7.12: move the definition of this constructor into the class body
+	Sales_data(std::istream &is)
+	{
+		read(is, *this);
+	}
+	
 	// new members:
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
@@ -51,5 +69,12 @@ std::ostream &print(std::ostream &os, const Sales_data &item)
 	os << item.isbn() << " " << item.units_sold << " " << item.revenue << " " << item.avg_price();
 	return os;
 }
+
+// Exercise 7.11
+// Constructor Sales_data(std::istream &) is defined out of class body:
+//Sales_data::Sales_data(std::istream &is)
+//{
+//	read(is, *this);
+//}
 
 #endif

@@ -140,7 +140,7 @@ int ex_7_9()
 }
 
 // Exercise 7.10
-int main()
+int ex_7_10()
 {
 	Sales_data data1, data2;
 	
@@ -152,3 +152,30 @@ int main()
 
 	return 0;
 }
+
+// Exercise 7.11, 7.12
+int main()
+{
+	// use the default constructor:
+	Sales_data data1;
+	cout << "data1 is: ";
+	print(cout, data1) << endl;
+
+	// use constructor Sales_data(const std::string &s)
+	Sales_data data2("0X-111-1234");
+	cout << "data2 is: ";
+	print(cout, data2) << endl;
+	
+	// use constructor Sales_data(const std::string &s, unsigned u, double p)
+	Sales_data data3("0X-111-1234", 5, 3.99);
+	cout << "data3 is: ";
+	print(cout, data3) << endl;
+
+	// use constructor Sales_data(std::istream &)
+	Sales_data data4(cin);
+	cout << "data4 is: ";
+	print(cout, data4) << endl;
+	
+	return 0;
+}
+
