@@ -10,7 +10,10 @@ std::istream &read(std::istream &, Sales_data &);
 struct Sales_data {
 	// Exercise 7.11
 	// new constructors:
-	Sales_data() = default;
+	// Exercise 7.14: write a default constructor that explicitly initialize the members to the values we have provided as in-class initializers
+	//Sales_data() = default;
+	Sales_data() : units_sold(0), revenue(0) {}	
+		
 	Sales_data(const std::string &s) : bookNo(s) {}
 	Sales_data(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) {}
 	//Sales_data(std::istream &);	

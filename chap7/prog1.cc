@@ -180,7 +180,7 @@ int ex_7_12()
 }
 
 // Exercise 7.13: use the istream constructor
-int main()
+int ex_7_13()
 {
 	// create total object and read in first record
 	Sales_data total(cin);	// read(cin, total)
@@ -210,4 +210,16 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 7.14
+int main()
+{
+	// use the default constructor:
+	Sales_data data1;
+	cout << "data1 is: ";
+	print(cout, data1) << endl;
+	
+	return 0;
+}
+
 
