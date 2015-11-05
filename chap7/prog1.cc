@@ -154,7 +154,7 @@ int ex_7_10()
 }
 
 // Exercise 7.11, 7.12
-int main()
+int ex_7_12()
 {
 	// use the default constructor:
 	Sales_data data1;
@@ -175,6 +175,38 @@ int main()
 	Sales_data data4(cin);
 	cout << "data4 is: ";
 	print(cout, data4) << endl;
+	
+	return 0;
+}
+
+// Exercise 7.13: use the istream constructor
+int main()
+{
+	// create total object and read in first record
+	Sales_data total(cin);	// read(cin, total)
+	
+	// check the first record read in
+	if(cin) {
+		// create trans object and read in the next record
+		Sales_data trans(cin);
+		while(cin) {
+			if(trans.isbn() == total.isbn()) { // if this isbn is the same, update the total
+				total.combine(trans);
+			}
+			else { 		// if this isbn is different, print out the last total and reset
+				print(cout, total) << endl;
+				total = trans;
+			}
+			read(cin, trans);
+		}
+		
+		// print the last trans:
+		print(cout, total) << endl;
+	}
+	else {
+		cerr << "No data?!" << endl;
+		return -1;
+	}
 	
 	return 0;
 }
