@@ -3,35 +3,41 @@
 
 // Exercise 7.12: declare these two here in order for constructor Sales_data(std::istream &is) to use non-member function read()
 // inside Sales_data class body.
-struct Sales_data;
-std::istream &read(std::istream &, Sales_data &);
+//struct Sales_data;
+//std::istream &read(std::istream &, Sales_data &);
 
 // Exercise 7.2
-struct Sales_data {
+class Sales_data {
 	// Exercise 7.11
 	// new constructors:
 	// Exercise 7.14: write a default constructor that explicitly initialize the members to the values we have provided as in-class initializers
-	//Sales_data() = default;
-	Sales_data() : units_sold(0), revenue(0) {}	
-		
+	//Sales_data() : units_sold(0), revenue(0) {}	
+public:	
+	Sales_data() = default;
 	Sales_data(const std::string &s) : bookNo(s) {}
 	Sales_data(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) {}
-	//Sales_data(std::istream &);	
+	Sales_data(std::istream &);	
 	// Exercise 7.12: move the definition of this constructor into the class body
-	Sales_data(std::istream &is)
-	{
-		read(is, *this);
-	}
+	//Sales_data(std::istream &is)
+	//{
+	//	read(is, *this);
+	//}
 	
 	// new members:
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
-	double avg_price() const;
 	
+private:	
+	double avg_price() const;
 	// data members are unchanged from sec2.6.1
 	std::string bookNo;
 	unsigned units_sold = 0;
 	double revenue = 0.0;
+	
+	// friend declarations
+	friend Sales_data add(const Sales_data &, const Sales_data &);
+	friend std::istream &read(std::istream &, Sales_data &);
+	friend std::ostream &print(std::ostream &, const Sales_data &);
 };
 
 // member function combine()
@@ -75,9 +81,9 @@ std::ostream &print(std::ostream &os, const Sales_data &item)
 
 // Exercise 7.11
 // Constructor Sales_data(std::istream &) is defined out of class body:
-//Sales_data::Sales_data(std::istream &is)
-//{
-//	read(is, *this);
-//}
+Sales_data::Sales_data(std::istream &is)
+{
+	read(is, *this);
+}
 
 #endif

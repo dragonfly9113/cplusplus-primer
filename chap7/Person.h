@@ -15,6 +15,10 @@ public:
 private:	
 	std::string name;
 	std::string address;
+	
+	// friend declarations so that these non-member functions can access private members
+	friend std::istream &read(std::istream &, Person &);
+	friend std::ostream &print(std::ostream &, const Person &);
 };
 
 // non-member function: read
