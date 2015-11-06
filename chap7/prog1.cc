@@ -133,8 +133,8 @@ int ex_7_9()
 	Person p;
 	cout << "Enter a person's name and address on two lines: " << endl;
 	
-	while (readp(cin, p))
-		printp(cout, p) << endl;
+	while (read(cin, p))
+		print(cout, p) << endl;
 	
 	return 0;
 }
@@ -212,12 +212,28 @@ int ex_7_13()
 }
 
 // Exercise 7.14
-int main()
+int ex_7_14()
 {
 	// use the default constructor:
 	Sales_data data1;
 	cout << "data1 is: ";
 	print(cout, data1) << endl;
+	
+	return 0;
+}
+
+// Exercise 7.15
+int main()
+{
+	// use the default constructor
+	Person person1;
+	cout << "person1 is: ";
+	print(cout, person1) << endl;
+	
+	// use another constructor
+	Person person2("William Luo", "10243 Main St, CA, 92111");
+	cout << "person2 is: ";
+	print(cout, person2) << endl;
 	
 	return 0;
 }
