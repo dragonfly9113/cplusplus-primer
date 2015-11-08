@@ -13,6 +13,7 @@ using std::initializer_list;
 
 #define NDEBUG
 
+// Exercise 7.21
 // Test after adding encapsulation and friend declarations of non-member functions 
 int main_friend()
 {

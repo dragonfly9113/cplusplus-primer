@@ -12,6 +12,7 @@ public:
 	std::string getName() const { return name; }
 	std::string getAddress() const { return address; }
 
+	// Exercise 7.22: hide implementation
 private:	
 	std::string name;
 	std::string address;

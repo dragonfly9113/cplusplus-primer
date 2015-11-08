@@ -27,6 +27,7 @@ public:
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
 	
+	// Exercise 7.21: hide implementation
 private:	
 	double avg_price() const;
 	// data members are unchanged from sec2.6.1
