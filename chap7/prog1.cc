@@ -5,6 +5,7 @@
 #include <cassert>
 #include "Sales_data.h"
 #include "Person.h"
+#include "Screen.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
 using std::string; using std::vector; using std::begin; using std::end;
@@ -39,3 +40,13 @@ int main_friend()
 	
 	return 0;
 }
+
+int main()
+{
+	Screen screen1;
+	cout << "screen1 is: " << endl;
+	print(cout, screen1);
+	
+	return 0;
+}
+
