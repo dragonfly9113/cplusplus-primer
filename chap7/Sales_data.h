@@ -50,7 +50,7 @@ Sales_data& Sales_data::combine(const Sales_data &rhs)
 }
 
 // member function avg_price()
-double Sales_data::avg_price() const
+inline double Sales_data::avg_price() const
 {
 	return (units_sold == 0) ? 0 : revenue / units_sold;
 }

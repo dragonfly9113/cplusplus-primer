@@ -15,12 +15,14 @@ private:
 	pos cursor = 0;
 	pos height = 0, width = 0;
 	std::string contents;
+	
+	friend std::ostream &print(std::ostream &, const Screen &);
 };
 
 // non-member function: print
 std::ostream &print(std::ostream &os, const Screen &screen)
 {
-	os << screen.cursor << " " << screen.height << " " << screen.width << " " << screen.contents << endl;	
+	os << screen.cursor << " " << screen.height << " " << screen.width << " " << screen.contents;
 	return os;
 }
 

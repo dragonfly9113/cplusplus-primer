@@ -41,11 +41,51 @@ int main_friend()
 	return 0;
 }
 
-int main()
+// Exercise 7.24
+int ex_7_24()
 {
 	Screen screen1;
-	cout << "screen1 is: " << endl;
-	print(cout, screen1);
+	cout << "screen1 is: ";
+	print(cout, screen1) << endl;;
+
+	Screen screen2(10, 10);
+	cout << "screen2 is: ";
+	print(cout, screen2) << endl;;
+
+	Screen screen3(10, 10, 'A');
+	cout << "screen3 is: ";
+	print(cout, screen3) << endl;;
+	
+	return 0;
+}
+
+// Exercise 7.25
+Screen screen_copy(Screen s)
+{
+	Screen screen = s;
+	return screen;
+}
+
+int main()
+{
+	Screen screen1(5, 5, 'B');
+	cout << "screen1 is: ";
+	print(cout, screen1) << endl;;
+
+	// copy: initializ the variable screen2 by copying screen1:
+	Screen screen2{screen1};
+	cout << "screen2 is: ";
+	print(cout, screen2) << endl;;
+
+	// assignment: assign screen2 to screen3 by =:
+	Screen screen3 = screen1;
+	cout << "screen3 is: ";
+	print(cout, screen3) << endl;;
+	
+	// copy: pass by value and return by value
+	Screen screen4 = screen_copy(screen1);
+	cout << "screen4 is: ";
+	print(cout, screen4) << endl;;
 	
 	return 0;
 }
