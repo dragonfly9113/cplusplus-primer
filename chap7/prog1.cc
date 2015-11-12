@@ -66,7 +66,7 @@ Screen screen_copy(Screen s)
 	return screen;
 }
 
-int main()
+int ex_7_25()
 {
 	Screen screen1(5, 5, 'B');
 	cout << "screen1 is: ";
@@ -90,3 +90,40 @@ int main()
 	return 0;
 }
 
+// Exercise 7.27
+int ex_7_27()
+{
+	Screen myScreen(5, 5, 'X');
+	myScreen.move(4,0).set('#').display(cout);
+	cout << endl;
+	myScreen.display(cout);
+	cout << endl;
+	
+	const Screen conScreen(5, 5, 'O');
+	conScreen.display(cout);
+	cout << endl;
+	
+	return 0;
+}
+
+// Exercise 7.31
+class class_y;	// forward declaration in order for name class_y to be used in class_x
+
+struct class_x {
+	class_y *ptrY = nullptr;
+};
+
+struct class_y {
+	class_x objX;
+};
+
+int main()
+{
+	class_x x1;
+	class_y y1;
+	
+	x1.ptrY = &y1;
+	y1.objX = x1;
+	
+	return 0;
+}
