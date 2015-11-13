@@ -41,6 +41,41 @@ private:
 	friend std::ostream &print(std::ostream &, const Sales_data &);
 };
 
+// Exercise 7.38
+class Sales_data_738 {
+public:	
+	// defines the default constructor as well as one that takes a string argument
+	Sales_data_738(std::string s = "") : bookNo(s) {}
+	// use cin as a default argument 
+	Sales_data_738(std::istream &is = std::cin);
+	// this constructor is as before
+	Sales_data_738(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) {}
+
+private:	
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+}; 
+
+// Exercise 7.40
+class Employee {
+public:	
+	// This constructor takes nothing or one string argument, it can also serve as default constructor
+	Employee(std::string n = "") : name(n) {}
+	// A constructor to take name, workNo and title
+	Employee(const std::string &n, const std::string &w, const std::string &t) : name(n), workNo(w), title(t) {}
+	// A constructor to ininitalize all members
+	Employee(const std::string &n, const std::string &w, const std::string &t, unsigned l, double s)
+		: name(n), workNo(w), title(t), level(l), salary(s) {}
+	
+private:
+	std::string name;	// employee's full name
+	std::string workNo; // employee's unique ID in company
+	std::string title;	// formal title
+	unsigned level;		// job level
+	double 	 salary;	// annual salary
+};
+
 // member function combine()
 Sales_data& Sales_data::combine(const Sales_data &rhs)
 {

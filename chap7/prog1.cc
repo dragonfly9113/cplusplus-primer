@@ -117,7 +117,7 @@ struct class_y {
 	class_x objX;
 };
 
-int main()
+int ex_7_31()
 {
 	class_x x1;
 	class_y y1;
@@ -127,3 +127,26 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 7.39
+int ex_7_39()
+{
+	// The following call is ambiguous because the compiler would not know which constructor to call, the one takes a string
+	// or the one takes an istream&
+	//Sales_data_738 trans1;
+	Sales_data_738 trans2("9-999-9999-9");
+	
+	return 0;
+}
+
+// Exercise 7.40
+int main()
+{
+	Employee employee1;
+	Employee employee2("John Doe");
+	Employee employee3("Johe Doe", "W00111222", "Software Engineer");
+	Employee employee4("Johe Doe", "W00111222", "Software Engineer", 16, 90000.0);
+	
+	return 0;
+}
+
