@@ -140,13 +140,37 @@ int ex_7_39()
 }
 
 // Exercise 7.40
-int main()
+int ex_7_40()
 {
-	Employee employee1;
-	Employee employee2("John Doe");
-	Employee employee3("Johe Doe", "W00111222", "Software Engineer");
-	Employee employee4("Johe Doe", "W00111222", "Software Engineer", 16, 90000.0);
+	//Employee employee1;
+	//Employee employee2("John Doe");
+	//Employee employee3("Johe Doe", "W00111222", "Software Engineer");
+	//Employee employee4("Johe Doe", "W00111222", "Software Engineer", 16, 90000.0);
 	
 	return 0;
 }
 
+// Exercise 7.41
+int ex_7_41()
+{
+	Sales_data_741 item1("0X-111-1234", 10, 3.99);
+	print(cout, item1) << endl;
+	Sales_data_741 item2;
+	print(cout, item2) << endl;
+	Sales_data_741 item3("0Y-222-3212");
+	print(cout, item3) << endl;
+	Sales_data_741 item4(cin);
+	print(cout, item4) << endl;
+	
+	return 0;
+}
+
+// Exercise 7.42
+int main()
+{
+	Employee employee1("Johe Doe", "W00111222", "Software Engineer", 16, 90000.0);
+	Employee employee2;
+	Employee employee3("Johe Doe", "W00111222", "Software Engineer");
+	
+	return 0;
+}

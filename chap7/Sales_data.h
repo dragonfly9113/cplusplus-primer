@@ -57,16 +57,54 @@ private:
 	double revenue = 0.0;
 }; 
 
+// Exercise 7.41
+// some necessary forwared declarations
+class Sales_data_741;
+std::istream &read(std::istream &, Sales_data_741 &);
+class Sales_data_741 {
+public:	
+	Sales_data_741(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) 
+		{ std::cout << "body of 3-argument constructor" << std::endl; }
+	// delegating constructors
+	Sales_data_741() : Sales_data_741("", 0, 0) 
+		{ std::cout << "body of default constructor" << std::endl; }
+	Sales_data_741(std::string s) : Sales_data_741(s, 0, 0) 
+		{ std::cout << "body of string-argument constructor" << std::endl; }
+	Sales_data_741(std::istream &is) : Sales_data_741() {
+		std::cout << "body of istream-argument constructor" << std::endl;
+		read(is, *this); }
+
+	std::string isbn() const { return bookNo; }
+	
+private:	
+	double avg_price() const;
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+
+	// friend declarations
+	friend std::istream &read(std::istream &, Sales_data_741 &);
+	friend std::ostream &print(std::ostream &, const Sales_data_741 &);	
+}; 
+
 // Exercise 7.40
 class Employee {
 public:	
 	// This constructor takes nothing or one string argument, it can also serve as default constructor
-	Employee(std::string n = "") : name(n) {}
+	//Employee(std::string n = "") : name(n) {}
 	// A constructor to take name, workNo and title
-	Employee(const std::string &n, const std::string &w, const std::string &t) : name(n), workNo(w), title(t) {}
+	//Employee(const std::string &n, const std::string &w, const std::string &t) : name(n), workNo(w), title(t) {}
 	// A constructor to ininitalize all members
 	Employee(const std::string &n, const std::string &w, const std::string &t, unsigned l, double s)
-		: name(n), workNo(w), title(t), level(l), salary(s) {}
+		: name(n), workNo(w), title(t), level(l), salary(s) 
+		{ std::cout << "body of 5-argument constructor" << std::endl; }
+	
+	// Exercise 7.42 : use delegating constructors
+	Employee() : Employee("", "", "", 0, 0.0) 
+		{ std::cout << "body of default constructor" << std::endl; }
+		
+	Employee(const std::string &n, const std::string &w, const std::string &t) : Employee(n, w, t, 0, 0.0)
+		{ std::cout << "body of 3-argument constructor" << std::endl; }
 	
 private:
 	std::string name;	// employee's full name
@@ -90,6 +128,11 @@ inline double Sales_data::avg_price() const
 	return (units_sold == 0) ? 0 : revenue / units_sold;
 }
 
+inline double Sales_data_741::avg_price() const
+{
+	return (units_sold == 0) ? 0 : revenue / units_sold;
+}
+
 // Exercise 7.6
 // add is non-member function
 Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
@@ -108,8 +151,22 @@ std::istream &read(std::istream &is, Sales_data &item)
 	return is;
 }
 
+std::istream &read(std::istream &is, Sales_data_741 &item)
+{
+	double price = 0;
+	is >> item.bookNo >> item.units_sold >> price;
+	item.revenue = item.units_sold * price;
+	return is;
+}
+
 // print is non-member function
 std::ostream &print(std::ostream &os, const Sales_data &item)
+{
+	os << item.isbn() << " " << item.units_sold << " " << item.revenue << " " << item.avg_price();
+	return os;
+}
+
+std::ostream &print(std::ostream &os, const Sales_data_741 &item)
 {
 	os << item.isbn() << " " << item.units_sold << " " << item.revenue << " " << item.avg_price();
 	return os;
