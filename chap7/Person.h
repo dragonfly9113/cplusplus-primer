@@ -22,6 +22,19 @@ private:
 	friend std::ostream &print(std::ostream &, const Person &);
 };
 
+// Exercise 7.43
+class NoDefault {
+public:
+	NoDefault(int);
+};
+
+struct Class_C {
+	// default constructor
+	Class_C() {}
+	
+	//NoDefault c_mem;
+};
+
 // non-member function: read
 std::istream &read(std::istream &is, Person &person)
 {

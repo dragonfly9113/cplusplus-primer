@@ -166,7 +166,7 @@ int ex_7_41()
 }
 
 // Exercise 7.42
-int main()
+int ex_7_42()
 {
 	Employee employee1("Johe Doe", "W00111222", "Software Engineer", 16, 90000.0);
 	Employee employee2;
@@ -174,3 +174,13 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 7.44
+int main()
+{
+	//vector<NoDefault> vec(10);
+	//vector<Class_C> vec(10);
+	
+	return 0;
+}
+
