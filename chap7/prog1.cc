@@ -176,7 +176,7 @@ int ex_7_42()
 }
 
 // Exercise 7.44
-int main()
+int ex_7_44()
 {
 	//vector<NoDefault> vec(10);
 	//vector<Class_C> vec(10);
@@ -184,3 +184,27 @@ int main()
 	return 0;
 }
 
+// Exercise 7.48
+int ex_7_48()
+{
+	string null_isbn("9-999-9999-9");
+	Sales_data item1(null_isbn);
+	Sales_data item2("9-999-9999-9");
+	
+	print(cout, item1) << endl;
+	print(cout, item2) << endl;
+	
+	return 0;
+}
+
+// Exercise 7.49
+int main()
+{
+	string s("0X-111-1234");
+	Sales_data_749 i("0X-111-1234", 10, 3.99);
+	
+	i.combine(s);
+	print(cout, i) << endl;
+	
+	return 0;
+}

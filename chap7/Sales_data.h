@@ -87,6 +87,37 @@ private:
 	friend std::ostream &print(std::ostream &, const Sales_data_741 &);	
 }; 
 
+// Exercise 7.49
+class Sales_data_749 {
+public:	
+	Sales_data_749() = default;
+	Sales_data_749(const std::string &s) : bookNo(s) {}
+	Sales_data_749(const std::string &s, unsigned u, double p) : bookNo(s), units_sold(u), revenue(u*p) {}
+	Sales_data_749(std::istream &);	
+	
+	Sales_data_749 &combine(const Sales_data_749&);
+	
+private:	
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+	
+	friend std::ostream &print(std::ostream &, const Sales_data_749 &);	
+};
+
+Sales_data_749& Sales_data_749::combine(const Sales_data_749 &rhs)
+{
+	units_sold += rhs.units_sold;
+	revenue += rhs.revenue;
+	return *this;	// return the object on which this function was called.
+}
+
+std::ostream &print(std::ostream &os, const Sales_data_749 &item)
+{
+	os << item.bookNo << " " << item.units_sold << " " << item.revenue;
+	return os;
+}
+
 // Exercise 7.40
 class Employee {
 public:	
