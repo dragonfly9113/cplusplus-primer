@@ -118,6 +118,13 @@ std::ostream &print(std::ostream &os, const Sales_data_749 &item)
 	return os;
 }
 
+// Exercise 7.52
+struct Sales_data_752 {
+	std::string bookNo;
+	unsigned units_sold;
+	double revenue;
+};
+
 // Exercise 7.40
 class Employee {
 public:	

@@ -198,7 +198,7 @@ int ex_7_48()
 }
 
 // Exercise 7.49
-int main()
+int ex_7_49()
 {
 	string s("0X-111-1234");
 	Sales_data_749 i("0X-111-1234", 10, 3.99);
@@ -208,3 +208,29 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 7.52
+int ex_7_52()
+{
+	Sales_data_752 item = {"978-0590353403", 25, 15.99};
+	
+	cout << item.bookNo << " " << item.units_sold << " " << item.revenue << endl;
+	
+	return 0;
+}
+
+// Exercise 7.53
+int main()
+{
+	constexpr Debug io_sub(false, true, false);
+	if (io_sub.any())
+		cerr << "print appropriate error messages" << endl;
+	
+	constexpr Debug prod(false);
+	if (prod.any())
+		cerr << "print an error message." << endl;
+	
+	return 0;
+}
+
+
