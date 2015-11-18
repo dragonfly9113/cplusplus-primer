@@ -52,6 +52,33 @@ private:
 	bool other;
 };
 
+// Exercise 7.57: define your own Account class
+class Account {
+public:
+	void calculate() { amount += amount * interestRate; }
+	static double rate() { return interestRate; }
+	static void rate(double);
+private:
+	std::string owner;
+	double amount;
+	static double interestRate;
+	static double initRate();
+};
+
+// This definition of static data member interestRate is necessary:
+double Account::interestRate = initRate();
+
+void Account::rate(double newRate)
+{
+	interestRate = newRate;
+}
+
+double Account::initRate()
+{
+	double rate = 1.0;
+	return rate;
+}
+
 // non-member function: read
 std::istream &read(std::istream &is, Person &person)
 {

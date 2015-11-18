@@ -220,7 +220,7 @@ int ex_7_52()
 }
 
 // Exercise 7.53
-int main()
+int ex_7_53()
 {
 	constexpr Debug io_sub(false, true, false);
 	if (io_sub.any())
@@ -233,4 +233,49 @@ int main()
 	return 0;
 }
 
+// Exercise 7.57
+int ex_7_57()
+{
+	double r;
+	Account ac1;
+	Account *ac2 = &ac1;
 
+	// access static member through class name
+	r = Account::rate();
+	cout << "The current interest rate is: " << r << endl;
+	
+	// the static member can also be accessed through object, reference and pointer
+	r = ac1.rate();
+	cout << "The current interest rate is: " << r << endl;
+	r = ac2->rate();
+	cout << "The current interest rate is: " << r << endl;
+	
+	// change the value of static member
+	Account::rate(2.0);
+	r = Account::rate();
+	cout << "The current interest rate is: " << r << endl;
+	
+	return 0;
+}
+
+// Exercise 7.58
+class Example {
+public:
+	static double rate;
+	static const int vecSize = 20;
+	// error: but I don't know why?
+	//static vector<double> vec(vecSize);
+	static vector<double> vec;
+};
+
+double Example::rate;
+// but here is OK:
+vector<double> Example::vec(vecSize);
+
+int main()
+{
+	for (auto e : Example::vec)
+		cout << e << " ";
+	
+	return 0;
+}
