@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <stdexcept>
@@ -10,7 +11,8 @@ using std::cin; using std::cout; using std::endl; using std::cerr;
 using std::string; using std::vector; using std::begin; using std::end;
 using std::runtime_error;
 using std::initializer_list;
-using std::istream; using std::ostream; using std::ifstream; using std::ofstream;
+using std::istream; using std::ostream; using std::ifstream; using std::ofstream; 
+using std::istringstream; using std::ostringstream;
 
 #define NDEBUG
 
@@ -140,7 +142,7 @@ int ex_8_6(int argc, char *argv[])
 }
 
 // Exercise 8.7
-int main(int argc, char *argv[])
+int ex_8_7(int argc, char *argv[])
 {
 	Sales_data total;
 	
@@ -184,4 +186,81 @@ int main(int argc, char *argv[])
 	
 	return 0;
 }
+
+// Exercise 8.9
+// istream &print_stream(istream &);
+int ex_8_9()
+{
+	string str("Hello World!");
+	istringstream iss(str);
+	
+	print_stream(iss);
+	
+	return 0;
+}
+
+// Exercise 8.10
+int ex_8_10()
+{
+	vector<string> vec;
+	string fileName("./book_sales");
+		
+	read_file(fileName, vec);	// store each line from a file in a vector<string>
+	
+	//cout << vec.size() << " lines are read:" << endl;
+	//for (auto e : vec)
+	//	cout << e << endl;
+	
+	// Now use an istringstream to read each element from the vector a word at a time
+	for (auto e : vec) {
+		string word;
+		istringstream iss(e);
+		
+		while (iss >> word) {
+			cout << word << endl;
+		}
+	}
+	
+	return 0;
+}
+
+// Exercise 8.11
+struct PersonInfo {
+	string name;
+	vector<string> phones;
+};
+
+ostream &print(ostream &os, PersonInfo &person)
+{
+	os << "name: " << person.name << endl;
+	os << "phones: ";
+	for (auto e : person.phones)
+		os << e << " ";
+	
+	return os;
+}
+
+int ex_8_11()
+{
+	string line, word;
+	vector<PersonInfo> people;
+	istringstream record;
+		
+	while (getline(cin, line)) {
+		PersonInfo info;
+		record.clear();		// this action is necessary for record to be re-used.
+		record.str(line);
+		record >> info.name;
+		while (record >> word)
+			info.phones.push_back(word);
+		people.push_back(info);
+	}
+	
+	for (auto e : people)
+		print(cout, e) << endl;
+	
+	return 0;
+}
+
+
 
