@@ -262,5 +262,37 @@ int ex_8_11()
 	return 0;
 }
 
+// Exercise 8.12
+int main(int argc, char *argv[])
+{
+	string line, word;
+	vector<PersonInfo> people;
+	istringstream record;
 
+	if (argc == 1) {
+		cout << "Usage: prog1 input_file" << endl;
+		return -1;
+	}
+	
+	ifstream input(argv[1]);
+	if (input.fail()) {
+		cout << "couldn't open: " << argv[1] << endl;
+		return -1;
+	}
+	
+	while (getline(input, line)) {
+		PersonInfo info;
+		record.clear();		// this statement is necessary for record to be re-used.
+		record.str(line);
+		record >> info.name;
+		while (record >> word)
+			info.phones.push_back(word);
+		people.push_back(info);
+	}
+	
+	for (auto e : people)
+		print(cout, e) << endl;
+	
+	return 0;
+}
 
