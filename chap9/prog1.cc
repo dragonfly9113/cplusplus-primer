@@ -61,8 +61,8 @@ int ex_9_4()
 {
 	int i;
 	vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	vector<int>::const_iterator iter1 = vec.cbegin(),
-								iter2 = vec.cend();
+	auto iter1 = vec.cbegin(),
+		 iter2 = vec.cend();
 
 	iter1 += 3;		// range: [4, 8)
 	iter2 -= 3;
@@ -94,15 +94,15 @@ int ex_9_5()
 {
 	int i;
 	vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	vector<int>::const_iterator iter1 = vec.cbegin(),
-								iter2 = vec.cend();
+	auto iter1 = vec.cbegin(),
+		 iter2 = vec.cend();
 
 	iter1 += 3;		// range: [4, 8)
 	iter2 -= 3;
 						  
 	cout << "Enter an integer: ";
 	while (cin >> i) {
-		vector<int>::const_iterator iter = isValueInRange_1(iter1, iter2, i);
+		auto iter = isValueInRange_1(iter1, iter2, i);
 		if ( iter != iter2)
 			cout << "match found at range position: " << (iter - iter1) << endl;
 		else
@@ -115,7 +115,7 @@ int ex_9_5()
 }
 
 // Exercise 9.6
-int main()
+int ex_9_6()
 {
 	list<int> lst1;
 	list<int>::iterator iter1 = lst1.begin(),
@@ -125,6 +125,59 @@ int main()
 	while (iter1 != iter2) {
 		// do something;
 	}
+	
+	return 0;
+}
+
+// Exercise 9.11
+void print_vec(vector<int> v)
+{
+	for (const auto e : v)
+		cout << e << " ";
+	cout << endl;
+}
+
+int ex_9_11()
+{
+	vector<int> vec{1, 2, 3};	// list initialized. vec has 3 integer elements with value 1, 2 and 3.	
+	vector<int> vec1(vec);		// copy initialized. vec1 holds the same elements as vec.
+	vector<int> vec2(vec.begin(), vec.end());	// range initialized. vec2 holds the same elements as vec.
+	vector<int> vec3(3);		// size initialized. vec3 has 3 elements, each of which is value initialized to 0.
+	vector<int> vec4(3, -1);	// size initialized. vec4 has 3 elements, each of which has value -1.
+	vector<int> vec5;			// default constructor. vec5 is empty.
+
+	cout << "vec: ";
+	print_vec(vec);
+	cout << "vec1: ";
+	print_vec(vec1);
+	cout << "vec2: ";
+	print_vec(vec2);
+	cout << "vec3: ";
+	print_vec(vec3);
+	cout << "vec4: ";
+	print_vec(vec4);
+	cout << "vec5: ";
+	print_vec(vec5);
+	
+	return 0;
+}
+
+// Exercise 9.13
+int ex_9_13()
+{
+	list<int> lst{11, 22, 33, 44, 55};
+	vector<int> vec{12, 23, 34, 45, 56};
+
+	// cannot copy initialize like below because either container type or element type doesn't match.
+	//vector<double> vecd(lst);
+	//vector<double> vecd(vec);
+	
+	// copy initialing using a range is OK
+	//vector<double> vecd(lst.begin(), lst.end());
+	vector<double> vecd(vec.begin(), vec.end());
+	
+	for (auto e : vecd)
+		cout << e << " ";
 	
 	return 0;
 }
