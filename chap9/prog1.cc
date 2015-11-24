@@ -182,4 +182,23 @@ int ex_9_13()
 	return 0;
 }
 
+// Exercise 9.14
+int main()
+{
+	list<const char*> lst{"hello", "world", "good", "morning!"};
+	vector<string> vec;
+	
+	// assignment operator requires left-hand and right-hand container have same type
+	//vec = lst;
+
+	// swap() also requires left-hand and right-hand container have same type
+	//swap(vec, lst);
+	
+	vec.assign(lst.begin(), lst.end());
+
+	for (auto e : vec)
+		cout << e << " ";
+	
+	return 0;
+}
 
