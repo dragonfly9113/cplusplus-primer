@@ -183,7 +183,7 @@ int ex_9_13()
 }
 
 // Exercise 9.14
-int main()
+int ex_9_14()
 {
 	list<const char*> lst{"hello", "world", "good", "morning!"};
 	vector<string> vec;
@@ -198,6 +198,39 @@ int main()
 
 	for (auto e : vec)
 		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.15
+int ex_9_15()
+{
+	vector<int> vec1{1, 3, 5, 7, 9};
+	vector<int> vec2{1, 3, 5, 8, 9};
+	
+	if (vec1 == vec2)
+		cout << "equal!" << endl;
+	else if (vec1 < vec2)
+		cout << "vec1 < vec2" << endl;
+	else
+		cout << "vec2 > vec1" << endl;
+	
+	return 0;
+}
+
+// Exercise 9.16
+int main()
+{
+	list<int> lst1{1, 3};
+	list<int> lst2{1, 3, 4};
+	vector<int> vec{1, 3, 5};
+	
+	// Operator == requires both operands must be the same kind of container and must hold the same type of elements.
+	//if (lst == vec)
+	//	cout << "equal!" << endl;
+	
+	if (lst1 < lst2)
+		cout << "lst1 < lst2" << endl;
 	
 	return 0;
 }
