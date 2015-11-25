@@ -219,7 +219,7 @@ int ex_9_15()
 }
 
 // Exercise 9.16
-int main()
+int ex_9_16()
 {
 	list<int> lst1{1, 3};
 	list<int> lst2{1, 3, 4};
@@ -231,6 +231,102 @@ int main()
 	
 	if (lst1 < lst2)
 		cout << "lst1 < lst2" << endl;
+	
+	return 0;
+}
+
+// Exercise 9.18
+int ex_9_18()
+{
+	string word;
+	deque<string> sdeq;
+	
+	cout << "Enter a sequence of stringS: " << endl;
+	while (cin >> word)
+		sdeq.push_back(word);
+	
+	for (auto it = sdeq.begin(); it != sdeq.end(); ++it)
+		cout << *it << endl;
+	
+	return 0;
+}
+
+// Exercise 9.19
+int ex_9_19()
+{
+	string word;
+	list<string> slst;
+	
+	cout << "Enter a sequence of stringS: " << endl;
+	while (cin >> word)
+		slst.push_back(word);
+	
+	for (auto it = slst.begin(); it != slst.end(); ++it)
+		cout << *it << endl;
+	
+	return 0;	
+}
+
+// Exercise 9.20
+int ex_9_20()
+{
+	list<int> ilst{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	deque<int> even_deq, odd_deq;
+	
+	for (auto it = ilst.begin(); it != ilst.end(); ++it)
+	{
+		if (*it % 2 == 0)
+			even_deq.push_back(*it);
+		else
+			odd_deq.push_back(*it);
+	}
+
+	cout << "even_deq: ";
+	for (auto e : even_deq)
+		cout << e << " ";
+	cout << endl;
+	cout << "odd_deq: ";
+	for (auto e : odd_deq)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.21
+int ex_9_21()
+{
+	string word;
+	vector<string> vec;
+	
+	auto iter = vec.begin();
+	while (cin >> word)
+		iter = vec.insert(iter, word);
+
+	for (auto e : vec)
+		cout << e << endl;
+		
+	return 0;
+}
+
+// Exercise 9.22
+int main()
+{
+	vector<int> iv{1, 3, 5, 7, 9};
+	int some_val = 1;
+	
+	auto iter = iv.begin(),
+		 mid = iv.begin() + iv.size()/2;
+	
+	while (iter != mid) {
+		if (*iter == some_val) {
+			iter = iv.insert(iter, 2 * some_val);
+			++iter;
+		}
+		++iter;
+	}
+	
+	for (auto e : iv)
+		cout << e << endl;
 	
 	return 0;
 }
