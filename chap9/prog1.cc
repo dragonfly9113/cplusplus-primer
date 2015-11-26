@@ -5,12 +5,13 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <forward_list>
 #include <stdexcept>
 #include <cassert>
 #include "Sales_data.h"
 
 using std::cin; using std::cout; using std::endl; using std::cerr;
-using std::string; using std::vector; using std::list; using std::deque;
+using std::string; using std::vector; using std::list; using std::deque; using std::forward_list;
 using std::begin; using std::end;
 using std::runtime_error;
 using std::initializer_list;
@@ -393,7 +394,7 @@ int ex_9_25()
 }
 
 // Exercise 9.26
-int main()
+int ex_9_26()
 {
 	vector<int> ivec;
 	list<int> ilst;
@@ -429,6 +430,50 @@ int main()
 	cout << "ivec is: ";
 	for (auto e : ivec)
 		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.27
+int ex_9_27()
+{
+	forward_list<int> flst{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
+	auto prev = flst.before_begin();
+	auto curr = flst.begin();
+	while (curr != flst.end())
+		if (*curr % 2) {
+			curr = flst.erase_after(prev);
+		} else {
+			prev = curr;
+			++curr;
+		}
+	
+	for (auto e : flst)
+		cout << e << " ";
+		
+	return 0;
+}
+
+// Exercise 9.28
+void find_and_insert(forward_list<string> &flst, string str1, string str2)
+{
+	auto prev = flst.before_begin();
+	auto curr = flst.begin();
+	
+	while (curr != flst.end())
+	{
+		if (*curr == str1) {
+			curr = flst.insert_after(curr);
+		} else {
+			++curr;
+		}
+	}
+}
+
+int main()
+{
+	
 	
 	return 0;
 }
