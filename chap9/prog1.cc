@@ -309,10 +309,10 @@ int ex_9_21()
 }
 
 // Exercise 9.22
-int main()
+int ex_9_22()
 {
 	vector<int> iv{1, 3, 5, 7, 9};
-	int some_val = 1;
+	int some_val = 7;
 	
 	auto iter = iv.begin(),
 		 mid = iv.begin() + iv.size()/2;
@@ -320,13 +320,115 @@ int main()
 	while (iter != mid) {
 		if (*iter == some_val) {
 			iter = iv.insert(iter, 2 * some_val);
-			++iter;
+			++iter;		// insert will return a new iter.
+			mid = iv.begin() + iv.size()/2;	// re-calculate mid because the old one has been invalidated by insert()
 		}
 		++iter;
 	}
 	
 	for (auto e : iv)
 		cout << e << endl;
+	
+	return 0;
+}
+
+// Exercise 9.23
+int ex_9_23()
+{
+	vector<int> c{7};
+	
+	if (!c.empty()) {
+		auto val = *c.begin(), val2 = c.front();
+		auto last = c.end();
+		auto val3 = *(--last);
+		auto val4 = c.back();
+		
+		cout << "size of c: " << c.size() << endl;
+		cout << val << endl;
+		cout << val2 << endl;
+		cout << val3 << endl;
+		cout << val4 << endl;
+	}
+	
+	return 0;
+}
+
+// Exercise 9.24
+int ex_9_24()
+{
+	vector<int> iv{1, 3, 5, 7, 9};
+	//vector<int> iv;
+	
+	cout << "fetch the first element using at():" << endl;
+	cout << iv.at(0) << endl;
+	
+	cout << "fetch the first element using subscript operator:" << endl;
+	cout << iv[0] << endl;
+	
+	cout << "fetch the first element using front():" << endl;
+	cout << iv.front() << endl;
+	
+	cout << "fetch the first element using begin():" << endl;
+	cout << *iv.begin() << endl;
+	
+	return 0;
+}
+
+// Exercise 9.25
+int ex_9_25()
+{
+	list<string> slist{"Hello", "world!", "Good", "morning", "America!"};
+	
+	auto elem1 = slist.begin();
+	auto elem2 = slist.end();
+	elem1 = elem2;
+	elem1 = slist.erase(elem1, elem2);
+	
+	cout << "size of slist: " << slist.size() << endl;
+	for (auto e : slist)
+		cout << e << " ";
+	cout << endl << "*elem1 is: " << *elem1;
+	
+	return 0;
+}
+
+// Exercise 9.26
+int main()
+{
+	vector<int> ivec;
+	list<int> ilst;
+	int ia[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 55, 89};
+	
+	// copy ia into a vector and a list:
+	for (auto e : ia) {
+		ivec.push_back(e);
+		ilst.push_back(e);
+	}
+
+	// remove odd elements in ilst:
+	auto it = ilst.begin();
+	while (it != ilst.end())
+		if (*it % 2)
+			it = ilst.erase(it);
+		else
+			++it;
+
+	// remove even elements in ivec:
+	auto it1 = ivec.begin();
+	while (it1 != ivec.end())
+		if (*it1 % 2 == 0)
+			it1 = ivec.erase(it1);
+		else
+			++it1;
+
+	cout << "ilst is: ";
+	for (auto e : ilst)
+		cout << e << " ";
+	cout << endl;
+		
+	cout << "ivec is: ";
+	for (auto e : ivec)
+		cout << e << " ";
 	
 	return 0;
 }
