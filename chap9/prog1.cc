@@ -458,23 +458,30 @@ int ex_9_27()
 // Exercise 9.28
 void find_and_insert(forward_list<string> &flst, string str1, string str2)
 {
+	auto prev = flst.before_begin();
 	auto curr = flst.begin();
+	bool match_found = false;
 	
 	while (curr != flst.end())
 	{
+		prev = curr;
 		if (*curr == str1) {
 			curr = flst.insert_after(curr, str2);
+			match_found = true;
 		} else {
 			++curr;
 		}
 	}
+	
+	if (!match_found)
+		flst.insert_after(prev, str2);
 }
 
 int main()
 {
 	forward_list<string> fslst{"Hello", "world!", "good", "morning", "How", "are", "you", "doing?"};
 	
-	find_and_insert(fslst, "doing?", "Better");
+	find_and_insert(fslst, "how", "good");
 	
 	for (auto e : fslst)
 		cout << e << " ";
