@@ -477,13 +477,119 @@ void find_and_insert(forward_list<string> &flst, string str1, string str2)
 		flst.insert_after(prev, str2);
 }
 
-int main()
+int ex_9_28()
 {
 	forward_list<string> fslst{"Hello", "world!", "good", "morning", "How", "are", "you", "doing?"};
 	
 	find_and_insert(fslst, "how", "good");
 	
 	for (auto e : fslst)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.31
+int ex_9_31_list()
+{
+	//vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	list<int> ilst = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
+	auto iter = ilst.begin();
+	while (iter != ilst.end()) {
+		if (*iter % 2) {
+			iter = ilst.insert(iter, *iter);	// duplicate the current element
+			++iter;	++iter;		// advance past this element and the one inserted before it
+		} else
+			iter = ilst.erase(iter);	// remove even element
+	}
+	
+	for (auto e : ilst)
+		cout << e << " ";
+	
+	return 0;
+}
+
+int ex_9_31_flist()
+{
+	//vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	forward_list<int> iflst = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+	auto prev = iflst.before_begin();
+	auto iter = iflst.begin();
+	while (iter != iflst.end()) {
+		if (*iter % 2) {
+			iter = iflst.insert_after(iter, *iter);	// duplicate the current element
+			prev = iter;	// move prev to the one just inserted
+			++iter;			// advance iter to the next element
+		} else
+			iter = iflst.erase_after(prev);	// use prev to remove current even element
+											// prev does not need to be updated since it is already updated in erase_after()
+	}
+	
+	for (auto e : iflst)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.32
+int ex_9_32()
+{
+	vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
+	auto iter = vi.begin();
+	while (iter != vi.end()) {
+		if (*iter % 2) {
+			iter = vi.insert(iter, *iter++);	// duplicate the current element
+			//iter += 2;		// advance past this element and the one inserted before it
+			++iter;
+		} else
+			iter = vi.erase(iter);	// remove even element
+	}
+	
+	for (auto e : vi)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.33
+int ex_9_33()
+{
+	vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
+	auto begin = vi.begin();
+	while (begin != vi.end()) {
+		// do some process
+		*begin = *begin * 2;
+		++begin;
+		//begin = vi.insert(begin, 42);
+		vi.insert(begin, 42);
+		++begin;
+	}
+
+	for (auto e : vi)
+		cout << e << " ";
+	
+	return 0;
+}
+
+// Exercise 9.34
+int main()
+{
+	vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+	auto iter = vi.begin();
+	while (iter != vi.end()) {
+		if (*iter % 2) {
+			iter = vi.insert(iter, *iter);
+			++iter;
+		}
+		++iter;
+	}
+
+	for (auto e : vi)
 		cout << e << " ";
 	
 	return 0;
