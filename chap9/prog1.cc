@@ -576,7 +576,7 @@ int ex_9_33()
 }
 
 // Exercise 9.34
-int main()
+int ex_9_34()
 {
 	vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -595,3 +595,68 @@ int main()
 	return 0;
 }
 
+// Exercise 9.38
+int ex_9_38()
+{
+	vector<int> ivec;
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+		 
+	// give ivec 24 elements
+	for (vector<int>::size_type ix = 0; ix != 24; ++ix)
+		ivec.push_back(ix);
+	
+	// size should be 24; capacity will be >= 24 and is implementation defined
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+	
+	// we now reserve some additional space
+	ivec.reserve(50);	// set capacity to at least 50; might be more
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+	
+	// add elements to use up all capacity
+	while (ivec.size() != ivec.capacity())
+		ivec.push_back(0);
+	// size and capacity are now equal; capacity should be unchanged since there is still no need to allocate more memory
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+	
+	// add one more element: the vector now has to reallocate itself
+	ivec.push_back(42);
+	// size should be 51; capacity will be >=51 and is implementation defined
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+
+	// ask for the memory to be returned
+	ivec.shrink_to_fit();
+	// size should be unchanged; capacity is implementation defined.
+	// calling shrink_to_fit is only a request, there is no gurantee that the library will return the memory.
+	cout << "ivec: size: " << ivec.size()
+		 << " capacity: " << ivec.capacity() << endl;
+	
+	return 0;
+}
+
+// Exercise 9.39
+int main()
+{
+	vector<string> svec;
+	// size should be 0; capacity should be >= 1024.
+	svec.reserve(1024);
+	string word;
+	// add certain number of stringS
+	while (cin >> word)
+		svec.push_back(word);
+	// add size/2 more stringS into svec.
+	svec.resize(svec.size() + svec.size()/2);
+	
+	for (auto e : svec)
+		cout << e << endl;
+
+	//size should be size + size/2; capacity should be unchanged is the new size <= capacity.
+	cout << "svec: size: " << svec.size()
+		 << " capacity: " << svec.capacity() << endl;
+	
+	return 0;
+}
