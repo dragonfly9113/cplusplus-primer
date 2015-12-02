@@ -639,7 +639,7 @@ int ex_9_38()
 }
 
 // Exercise 9.39
-int main()
+int ex_9_39()
 {
 	vector<string> svec;
 	// size should be 0; capacity should be >= 1024.
@@ -660,3 +660,49 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 9.41
+int ex_9_41()
+{
+	vector<char> vc = {'H', 'e', 'l', 'l', 'o'};
+	
+	string s(vc.begin(), vc.end());
+	
+	cout << "s is: " << s << endl;
+	
+	return 0;
+}
+
+// Exercise 9.42
+int ex_9_42()
+{
+	string s;
+	char c;
+	
+	s.reserve(200);
+	while (cin >> c)
+		s.push_back(c);
+
+	cout << "s is: " << s << endl;
+	// size of s should be at least 100; capacity should be >=200
+	cout << "s: size: " << s.size()
+		 << " capacity: " << s.capacity() << endl;
+	
+	return 0;
+}
+
+// Exercise 9.43
+void replace_old_with_new(string s, string oldVal, string newVal)
+{
+	
+	
+	
+}
+
+int main()
+{
+	
+	
+	return 0;
+}
+
