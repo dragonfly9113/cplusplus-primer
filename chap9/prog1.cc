@@ -759,12 +759,12 @@ string add_prefix_suffix(string name, string prefix, string suffix)
 	newStr.insert(iter, prefix.begin(), prefix.end());
 	
 	// add suffix
-	//newStr.append();
+	newStr.append(" " + suffix);
 	
 	return newStr;
 }
 
-int main()
+int ex_9_45()
 {
 	string result;
 	
@@ -773,3 +773,30 @@ int main()
 	
 	return 0;
 }
+
+// Exercise 9.46
+string add_prefix_suffix_pos(string name, string prefix, string suffix)
+{
+	string newStr(name);	// create a new string newStr, copy name to it.
+
+	cout << "A new version: add_prefix_suffix_pos()" << endl;
+	
+	// add prefix
+	newStr.insert(0, prefix + " ");
+	
+	// add suffix
+	newStr.insert(newStr.size(), " " + suffix);
+	
+	return newStr;
+}
+
+int main()
+{
+	string result;
+	
+	result = add_prefix_suffix_pos("John Doe", "Mr.", "III");
+	cout << result << endl;
+	
+	return 0;
+}
+
