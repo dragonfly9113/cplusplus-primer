@@ -692,17 +692,84 @@ int ex_9_42()
 }
 
 // Exercise 9.43
-void replace_old_with_new(string s, string oldVal, string newVal)
+void replace_old_with_new(string &s, string oldVal, string newVal)
 {
+	auto iter = s.begin();
 	
-	
-	
+	while (iter != s.end()) {
+		string temp(iter, iter + oldVal.size());
+		if (temp == oldVal) {
+			auto idx = iter - s.begin();
+			s.erase(idx, oldVal.size());
+			s.insert(idx, newVal);
+			// update iter to denote the last character of newVal
+			iter = s.begin() + idx + newVal.size() - 1;
+		}
+
+		++iter;
+	}
 }
 
-int main()
+int ex_9_43()
 {
-	
+	string str("Hello world, tho you know this. Pls take tho lead tho");
+
+	cout << str << endl;	
+	replace_old_with_new(str, "tho", "though");
+	cout << str << endl;
 	
 	return 0;
 }
 
+// Exercise 9.44
+void replace_old_with_new_idx(string &s, string oldVal, string newVal)
+{
+	string::size_type idx = 0;
+	
+	while (idx != s.size()) {
+		string temp(s, idx, oldVal.size());
+		if (temp == oldVal) {
+			s.replace(idx, oldVal.size(), newVal);
+			// update idx to denote the last character of newVal
+			idx = idx + newVal.size() - 1;
+		}
+		++idx;
+	}
+}
+
+int ex_9_44()
+{
+	string str("Hello world, tho you know this. Pls take tho lead tho");
+
+	cout << str << endl;	
+	replace_old_with_new_idx(str, "tho", "though");
+	cout << str << endl;
+	
+	return 0;
+}
+
+// Exercise 9.45
+string add_prefix_suffix(string name, string prefix, string suffix)
+{
+	string newStr(name);	// create a new string newStr, copy name to it.
+	auto iter = newStr.begin();
+	
+	// add prefix
+	iter = newStr.insert(iter, ' ');	// iter now denote the first inserted character ' '
+	newStr.insert(iter, prefix.begin(), prefix.end());
+	
+	// add suffix
+	//newStr.append();
+	
+	return newStr;
+}
+
+int main()
+{
+	string result;
+	
+	result = add_prefix_suffix("John Doe", "Mr.", "Jr.");
+	cout << result << endl;
+	
+	return 0;
+}
