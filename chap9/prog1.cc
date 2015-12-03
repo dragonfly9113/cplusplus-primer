@@ -790,7 +790,7 @@ string add_prefix_suffix_pos(string name, string prefix, string suffix)
 	return newStr;
 }
 
-int main()
+int ex_9_46()
 {
 	string result;
 	
@@ -800,3 +800,96 @@ int main()
 	return 0;
 }
 
+// Exercise 9.47: use find_first_of
+int ex_9_47_1()
+{
+	string str("ab2c3d7R4E6");
+	string numbers("0123456789");
+	string alphabets("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	string::size_type pos = 0;
+	string numerica_chars, alphabetic_chars;
+	
+	while ((pos = str.find_first_of(numbers, pos)) != string::npos) {
+		numerica_chars.push_back(str[pos]);
+		++pos;
+	}
+
+	pos = 0;
+	while ((pos = str.find_first_of(alphabets, pos)) != string::npos) {
+		alphabetic_chars.push_back(str[pos]);
+		++pos;
+	}
+
+	cout << str << endl;
+	cout << "all numbers are: " << numerica_chars << endl;
+	cout << "all alphabets are: " << alphabetic_chars << endl;
+	
+	return 0;
+}
+
+// Exercise 9.47: use find_first_not_of
+int ex_9_47_2()
+{
+	string str("ab2c3d7R4E6");
+	string numbers("0123456789");
+	string alphabets("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	string::size_type pos = 0;
+	string numerica_chars, alphabetic_chars;
+	
+	while ((pos = str.find_first_not_of(alphabets, pos)) != string::npos) {
+		numerica_chars.push_back(str[pos]);
+		++pos;
+	}
+
+	pos = 0;
+	while ((pos = str.find_first_not_of(numbers, pos)) != string::npos) {
+		alphabetic_chars.push_back(str[pos]);
+		++pos;
+	}
+
+	cout << str << endl;
+	cout << "all numbers are: " << numerica_chars << endl;
+	cout << "all alphabets are: " << alphabetic_chars << endl;
+	
+	return 0;
+}
+
+// Exercise 9.48
+int ex_9_48()
+{
+	string numbers("0123456789"), name("r2d2");
+	
+	auto pos = numbers.find(name);
+	
+	cout << pos << endl;
+	
+	return 0;
+}
+
+// Exercise 9.49
+int main(int argc, char *argv[])
+{
+	string ascenders("bdfhijklt");
+	string decenders("gjpqy");
+	string word, candidate;
+	
+	if (argc < 2) {
+		cout << "Usage: prog1 filename" << endl;
+		return -1;
+	}
+	
+	ifstream input(argv[1]);
+	if (!input)
+		cerr << "couldn't open: " + string(argv[1]) << endl;
+	
+	while (input >> word) {
+		if ((word.find_first_of(ascenders) == string::npos) && (word.find_first_of(decenders) == string::npos)) {
+			if (word.size() > candidate.size())
+				candidate = word;
+		}
+	}
+	
+	cout << "The longest word that contains neither ascenders nor decenders is: " << candidate << endl;
+	
+	return 0;
+}
