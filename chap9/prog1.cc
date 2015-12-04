@@ -964,20 +964,24 @@ int main()
 		}
 		else if ( e == ')' && open_p_found) {
 			open_p_found = false;
-			// pop out the parenthesized expression and push a special value to indicate
-			
-			
+			// pop out the parenthesized expression and push a special value in place
+			while (cstk.top() != '(')
+				cstk.pop();
+			// pop out the openning parenthesis	and push a special value in place
+			cstk.pop();
+			cstk.push('{'); cstk.push('}');
 		}
 	}
-		
+	
+	deque<char> cdeq;
 	while (!cstk.empty()) {
 		char value = cstk.top();
-		cout << value << endl;
+		cdeq.push_front(value);
 		cstk.pop();
 	}
-
-	//string new_exp(cstk);
-	//cout << new_exp << endl;
+	
+	string new_exp(cdeq.begin(), cdeq.end());
+	cout << new_exp << endl;
 	
 	return 0;
 }
