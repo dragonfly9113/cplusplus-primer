@@ -6,6 +6,8 @@
 #include <list>
 #include <deque>
 #include <forward_list>
+#include <stack>
+#include <queue>
 #include <stdexcept>
 #include <cassert>
 #include "Sales_data.h"
@@ -867,7 +869,7 @@ int ex_9_48()
 }
 
 // Exercise 9.49
-int main(int argc, char *argv[])
+int ex_9_49(int argc, char *argv[])
 {
 	string ascenders("bdfhijklt");
 	string decenders("gjpqy");
@@ -893,3 +895,91 @@ int main(int argc, char *argv[])
 	
 	return 0;
 }
+
+// Exercise 9.50
+// TO-DO: couldn't verify this program because GCC 4.9.3 for Cygwin doesn't support std::stoi
+int ex_9_50()
+{
+	vector<string> svec{"1", "2", "3", "4", "5"};
+	int sum = 0;
+	
+	//for (auto e : svec) {
+	//	sum += std::stoi(e, nullptr, 10);
+	//}
+
+	cout << sum << endl;
+	
+	return 0;
+}
+
+// Exercise 9.51
+// TO-DO: didn't do this exercise because my current GCC 4.9.3 for Cygwin deoesn't support C++11 numeric converstion functions.
+
+// Example: Stack Adaptor
+int stack_adapter()
+{
+	std::stack<int> intStack;
+	
+	for (size_t ix = 0; ix != 10; ++ix)
+		intStack.push(ix);
+	
+	while (!intStack.empty()) {
+		int value = intStack.top();
+		cout << value << endl;
+		intStack.pop();
+	}
+	
+	return 0;
+}
+
+// Example: Queue Adaptor
+int queue_adaptor()
+{
+	std::queue<int> intQueue;
+	
+	for (size_t ix = 0; ix != 10; ++ix)
+		intQueue.push(ix);
+	
+	while (!intQueue.empty()) {
+		int value = intQueue.front();
+		cout << value << endl;
+		intQueue.pop();
+	}
+	
+	return 0;
+}
+
+// Exercise 9.52
+int main()
+{
+	// after processing, the expression should be: "value1 && P-EXP || P-EXP && value2"
+	string orig_exp("value1 && ( a == 0 ) || ( b == 1) && value2");
+	std::stack<char> cstk;
+	bool open_p_found = false;
+
+	for (auto e : orig_exp) {
+		cstk.push(e);
+		if ( e == '(') {
+			open_p_found = true;
+		}
+		else if ( e == ')' && open_p_found) {
+			open_p_found = false;
+			// pop out the parenthesized expression and push a special value to indicate
+			
+			
+		}
+	}
+		
+	while (!cstk.empty()) {
+		char value = cstk.top();
+		cout << value << endl;
+		cstk.pop();
+	}
+
+	//string new_exp(cstk);
+	//cout << new_exp << endl;
+	
+	return 0;
+}
+
+
