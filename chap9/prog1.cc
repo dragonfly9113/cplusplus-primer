@@ -897,14 +897,15 @@ int ex_9_49(int argc, char *argv[])
 }
 
 // Exercise 9.50
-// TO-DO: couldn't verify this program because GCC 4.9.3 for Cygwin doesn't support std::stoi
+// Couldn't verify this program on my PC because GCC 4.9.3 on Cygwin doesn't support numeric conversion functions
+// Verified this program on server with GCC 4.8.4 on Ubuntu 14.04.2 LTS.
 int ex_9_50()
 {
 	vector<string> svec{"1", "2", "3", "4", "5"};
 	int sum = 0;
 	
 	//for (auto e : svec) {
-	//	sum += std::stoi(e, nullptr, 10);
+	//	sum += std::stoi(e);
 	//}
 
 	cout << sum << endl;
@@ -913,7 +914,90 @@ int ex_9_50()
 }
 
 // Exercise 9.51
-// TO-DO: didn't do this exercise because my current GCC 4.9.3 for Cygwin deoesn't support C++11 numeric converstion functions.
+// Couldn't verify this program on my PC because GCC 4.9.3 on Cygwin doesn't support numeric conversion functions
+// Verified this program on server with GCC 4.8.4 on Ubuntu 14.04.2 LTS.
+class Calendar_Date
+{
+public:
+	Calendar_Date() = default;
+	Calendar_Date(string);
+	
+private:
+	unsigned year = 0;
+	unsigned month = 0;
+	unsigned day = 0;
+	
+	friend void print(Calendar_Date);
+};
+
+// This constructor should handle a variety of date formats, such as January 1, 1900, 1/1/1900, Jan 1, 1900, and so on.
+Calendar_Date::Calendar_Date(string s)
+{
+	year = 0, month = 0, day = 0;
+	vector<string> months{"January", "February", "March", "April", "May", "June", "July", "August", "September", "Octorber", "November", "December"};
+	vector<string> months_short{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+	string numbers("0123456789");
+
+	// month: search for month name
+	for (vector<string>::size_type idx = 0; idx != months.size(); ++idx) {
+		if (s.find(months[idx]) != string::npos) {
+			month = idx + 1;
+			break;
+		}
+	}
+	
+	// month: search for month short name
+	if (month == 0) {
+		for (vector<string>::size_type idx = 0; idx != months_short.size(); ++idx) {
+			if (s.find(months_short[idx]) != string::npos) {
+				month = idx + 1;
+				break;
+			}
+		}
+	}
+	
+	// year and day: if month match a month name or month short name, search for year and day
+	string::size_type pos = 0;
+	vector<unsigned> mdy;
+	if (month > 0) {
+		while ((pos = s.find_first_of(numbers, pos)) != string::npos) {
+			//auto number = std::stoul(s.substr(pos));
+			auto number = 1;
+			if ( number >= 1 && number <= 31)
+				day = number;
+			else
+				year = number;
+			pos = s.find_first_not_of(numbers, pos);	// move pos to the next non-number character
+		}
+	}
+	else {	// no match for month name or month short name, search numbers for month, day and year: 1/1/1900
+		while ((pos = s.find_first_of(numbers, pos)) != string::npos) {
+			//auto number = std::stoul(s.substr(pos));
+			auto number = 1;
+			mdy.push_back(number);
+			pos = s.find_first_not_of(numbers, pos);	// move pos to the next non-number character
+		}
+		month = mdy[0];
+		day = mdy[1];
+		year = mdy[2];
+	}
+}
+
+void print(Calendar_Date date)
+{
+	cout << "year: " << date.year << endl;
+	cout << "month: " << date.month << endl;
+	cout << "day: " << date.day << endl;
+}
+
+int ex_9_51()
+{
+	//Calendar_Date d("03/31/2015");
+	Calendar_Date d("Mar 21, 2011");
+	
+	print(d);
+	return 0;
+}
 
 // Example: Stack Adaptor
 int stack_adapter()
@@ -950,7 +1034,7 @@ int queue_adaptor()
 }
 
 // Exercise 9.52
-int main()
+int ex_9_52()
 {
 	// after processing, the expression should be: "value1 && P-EXP || P-EXP && value2"
 	string orig_exp("value1 && ( a == 0 ) || ( b == 1) && value2");
@@ -986,4 +1070,8 @@ int main()
 	return 0;
 }
 
-
+int main()
+{
+	
+	return 0;
+}
