@@ -2,24 +2,23 @@
 
 #include <iostream>
 
+// Chap 15. Object Oriented Programming
 class Quote
 {
 public:
-	Quote();
+	Quote() = default;
+	Quote(const std::string &book, double sales_price) : bookNo(book), price(sales_price) {}
 
-	std::string isbn() const;
-	virtual double net_price(std::size_t n) const;
+	std::string isbn() const { return bookNo; }
+	virtual double net_price(std::size_t n) const { return n * price; }
 
-	virtual ~Quote();
-};
+	static void statmem() {}
 
-class Bulk_quote : public Quote
-{
-public:
-	Bulk_quote();
+	virtual ~Quote() = default;
 
-	double net_price(std::size_t n) const override;
+private:
+	std::string bookNo;   // ISBN number of this item
 
-
-	~Bulk_quote();
+protected:
+	double price = 0.0;   // Normal, undiscounted price
 };
