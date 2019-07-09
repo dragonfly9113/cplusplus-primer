@@ -11,7 +11,7 @@
 int main()
 {
 	Quote item("978-3-16-148410-0", 9.99);			// object of base type
-	Bulk_quote bulk("123-4-56-789012-1", 10.0, 10, 0.2);	// ojbect of derived type
+	Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
 	
 	Quote *p = &item;	// p points to a Quote object
 	//Bulk_quote *pd = &item;	// Error: cannot convert from Quote* to Bulk_quote*
@@ -28,6 +28,15 @@ int main()
 
 	//std::cout << "ISBN: " << pd->isbn() << " total due: " << pd->net_price(10) << std::endl;
 	//std::cout << "ISBN: " << rd.isbn() << " total due: " << rd.net_price(30) << std::endl;
+
+	// Test sliced down
+	Bulk_quote bulk1("123-4-56-789012-1", 10.0, 10, 0.2);	// ojbect of derived type
+
+	//Quote item1(bulk);
+	Quote item1 = bulk;
+
+	//std::cout << "ISBN: " << item1.isbn() << " total due: " << item1.net_price(10) << std::endl;
+
 
 	return 0;
 }

@@ -3,6 +3,7 @@
 
 double Bulk_quote::net_price(std::size_t n) const
 {
+	//std::cout << "net_price: Bulk_quote version" << std::endl;
 	if (n >= min_qty)
 		return n * (1 - discount) * price;
 	else
