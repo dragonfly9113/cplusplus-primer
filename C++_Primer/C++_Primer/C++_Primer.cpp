@@ -49,13 +49,35 @@ int main()
 	Sneaky sneaky(20, 30);
 
 	Base *pb = &base;
-	Base *ps = &sneaky;
+	Sneaky *ps = &sneaky;
 
+	Base &rb = base;
+	Sneaky &rs = sneaky;
+
+	//pb->print_mem();
+	//ps->print_mem();
+	rb.print_mem();
+	rs.print_mem();
+	std::cout << "Try to change objects:" << std::endl;
+
+	//base.set_mem(15);
 	//base.print_mem();
-	//sneaky.print_mem();
+	//pb->set_mem(15);
+	//pb->print_mem();
+	rb.set_mem(15);
+	rb.print_mem();
 
-	pb->print_mem();
-	ps->print_mem();
+	//sneaky.set_mem(25, 35);
+	//sneaky.print_mem();
+	//ps->set_mem(25, 35);
+	//ps->print_mem();
+	rs.set_mem(25, 35);
+	rs.print_mem();
+
+	std::cout << "Try to change Sneaky object by using clobber()" << std::endl;
+	clobber(sneaky);
+	sneaky.print_mem();
+
 
 	return 0;
 }
