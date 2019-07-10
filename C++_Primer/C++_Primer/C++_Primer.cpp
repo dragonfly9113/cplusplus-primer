@@ -8,9 +8,8 @@
 #include "Bulk_quote.h"
 #include "Header.h"
 
-int main_quote();
-
-int main_quote()
+#if 0
+int main()
 {
 	Quote item("978-3-16-148410-0", 9.99);			// object of base type
 	Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
@@ -42,7 +41,9 @@ int main_quote()
 
 	return 0;
 }
+#endif
 
+#if 0
 int main()
 {
 	Base base(10);
@@ -80,4 +81,16 @@ int main()
 
 
 	return 0;
+}
+#endif
+
+int main()
+{
+	Pub_Derv d1;
+	Priv_Derv d2;
+	d1.f();
+	d1.pub_mem();
+
+	d2.f1();
+	//d2.pub_mem();  // Error: pub_mem is private in the derived class.
 }

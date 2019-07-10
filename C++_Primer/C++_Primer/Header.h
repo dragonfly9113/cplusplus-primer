@@ -1,6 +1,7 @@
 #pragma once
 
-// 15.5 Access Control and Inheritance
+// 15.5 Access Control and Inheritance: protected members
+#if 0
 class Base {
 public:
 	Base() = default;
@@ -39,3 +40,25 @@ private:
 void clobber(Sneaky &s) { s.j = s.prot_mem = 0; }
 
 //void clobber(Base &b) { b.prot_mem = 0; }  // Error: cannot access protected member declared in class Base
+#endif
+
+
+// 15.5 Access Control and Inheritance: public, private, and protected inheritance
+class Base {
+public:
+	void pub_mem() {}
+protected:
+	int prot_mem;
+private:
+	char priv_mem;
+};
+
+struct Pub_Derv : public Base {
+	int f() { return prot_mem; }     // OK: derived classes can access protected members inherited from base class.
+	//char g() { return priv_mem; }    // Error: derived classes have no access to private members from base class.
+};
+
+struct Priv_Derv : private Base {
+	int f1() const { return prot_mem; }   // OK: private derivation doesn't affect access in the derived class
+};
+
