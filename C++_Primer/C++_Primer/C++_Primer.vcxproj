@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Bulk_quote.h" />
     <ClInclude Include="Disc_quote.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Quote.h" />
   </ItemGroup>

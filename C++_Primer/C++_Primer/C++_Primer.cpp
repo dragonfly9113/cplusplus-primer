@@ -6,9 +6,11 @@
 #include <string>>
 
 #include "Bulk_quote.h"
+#include "Header.h"
 
+int main_quote();
 
-int main()
+int main_quote()
 {
 	Quote item("978-3-16-148410-0", 9.99);			// object of base type
 	Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
@@ -37,6 +39,23 @@ int main()
 
 	//std::cout << "ISBN: " << item1.isbn() << " total due: " << item1.net_price(10) << std::endl;
 
+
+	return 0;
+}
+
+int main()
+{
+	Base base(10);
+	Sneaky sneaky(20, 30);
+
+	Base *pb = &base;
+	Base *ps = &sneaky;
+
+	//base.print_mem();
+	//sneaky.print_mem();
+
+	pb->print_mem();
+	ps->print_mem();
 
 	return 0;
 }
