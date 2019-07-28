@@ -84,6 +84,7 @@ int main()
 }
 #endif
 
+#if 0
 int main()
 {
 	Pub_Derv d1;
@@ -93,4 +94,18 @@ int main()
 
 	d2.f1();
 	//d2.pub_mem();  // Error: pub_mem is private in the derived class.
+
+	return 0;
+}
+#endif
+
+int main()
+{
+	Bulk_quote bulk;
+	Bulk_quote *bulkP = &bulk;
+	Quote *itemP = &bulk;
+	bulkP->discount_policy();
+	//itemP->discount_policy();
+
+	return 0;
 }

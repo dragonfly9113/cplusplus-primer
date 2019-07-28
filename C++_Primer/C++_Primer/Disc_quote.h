@@ -11,6 +11,11 @@ public:
 
 	double net_price(std::size_t) const = 0;   // pure virtual function
 
+	std::pair<size_t, double> discount_policy() const
+	{
+		return { quantity, discount };
+	}
+
 	~Disc_quote() = default;
 
 protected:
