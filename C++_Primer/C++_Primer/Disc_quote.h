@@ -16,7 +16,9 @@ public:
 		return { quantity, discount };
 	}
 
-	~Disc_quote() = default;
+	~Disc_quote() {
+		printf("Disc_quote destructor is called.\n");
+	}
 
 protected:
 	std::size_t quantity = 0;

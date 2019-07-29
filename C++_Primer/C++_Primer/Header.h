@@ -44,6 +44,7 @@ void clobber(Sneaky &s) { s.j = s.prot_mem = 0; }
 
 
 // 15.5 Access Control and Inheritance: public, private, and protected inheritance
+#if 0
 class Base {
 public:
 	void pub_mem() {}
@@ -60,5 +61,44 @@ struct Pub_Derv : public Base {
 
 struct Priv_Derv : private Base {
 	int f1() const { return prot_mem; }   // OK: private derivation doesn't affect access in the derived class
+};
+#endif
+
+// 15.6 Class Scope under Inheritance
+class Base {
+public:
+	virtual int fcn() {
+		printf("Base::fcn() is called.\n");
+		return 0;
+	}
+};
+
+class D1 : public Base {
+public:
+	int fcn(int i) {
+		printf("D1::fcn(int) is called: i = %d\n", i);
+		return 0;
+	}
+
+	virtual void f2() {
+		printf("D1::f2() is called.\n");
+	}
+};
+
+class D2 : public D1 {
+public:
+	int fcn(int i) {
+		printf("D2::fcn(int) is called: i = %d\n", i);
+		return 0;
+	}
+
+	int fcn() {
+		printf("D2::fcn() is called.\n");
+		return 0;
+	}
+
+	void f2() {
+		printf("D2::f2() is called.\n");
+	}
 };
 

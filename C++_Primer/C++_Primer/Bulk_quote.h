@@ -14,6 +14,8 @@ public:
 
 	void f(const Bulk_quote&);
 
-	~Bulk_quote() = default;
+	~Bulk_quote() {
+		printf("Bulk_quote destructor is called.\n");
+	}
 };
 

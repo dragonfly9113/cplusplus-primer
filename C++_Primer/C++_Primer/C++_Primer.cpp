@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
-#include <string>>
+#include <string>
 
 #include "Bulk_quote.h"
 #include "Header.h"
@@ -99,13 +99,42 @@ int main()
 }
 #endif
 
+#if 0
 int main()
 {
 	Bulk_quote bulk;
 	Bulk_quote *bulkP = &bulk;
 	Quote *itemP = &bulk;
 	bulkP->discount_policy();
-	//itemP->discount_policy();
+	//itemP->discount_policy(); // Error: there is no member discount_policy() in Quote class.
+
+	Base bobj; D1 d1obj; D2 d2obj;
+	Base *bp1 = &bobj, *bp2 = &d1obj, *bp3 = &d2obj;
+	bp1->fcn();  // virtual call, Base::fcn() is called.
+	bp2->fcn();  // virtual call, Base::fcn() is called.
+	bp3->fcn();  // virtual call, D2::fcn() is called.
+
+	D1 *d1p = &d1obj; D2 *d2p = &d2obj;
+	//bp2->f2(); // Error: Base has no member named f2.
+	d1p->f2();   // Virtual call, D1::f2() is called.
+	d2p->f2();   // Virtual Call, D2::f2() is called.
+
+	Base *p1 = &d2obj; D1 *p2 = &d2obj; D2 *p3 = &d2obj;
+	//p1->fcn(42);  // Error: Base has no version of fcn that takes an int.
+	p2->fcn(42);  // statically bound, calls D1::fcn(int)
+	p3->fcn(42);  // statically bound, calls D2::fcn(int)
+
+	return 0;
+}
+#endif
+
+int main()
+{
+	Quote *itemP = new Quote;  // same static and dynamic type
+	delete itemP;   // destructor for Quote called
+
+	itemP = new Bulk_quote;  // static and dynamic type differ
+	delete itemP;   // destructor for Bulk_quote called
 
 	return 0;
 }

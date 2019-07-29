@@ -14,7 +14,9 @@ public:
 
 	static void statmem() {}
 
-	virtual ~Quote() = default;
+	virtual ~Quote() {
+		printf("Quote descructor is called.\n");
+	}
 
 private:
 	std::string bookNo;   // ISBN number of this item
