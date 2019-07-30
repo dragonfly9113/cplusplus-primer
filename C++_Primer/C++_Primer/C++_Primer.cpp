@@ -128,12 +128,14 @@ int main()
 }
 #endif
 
+// 15.7 Constructors and Copy Control
 int main()
 {
 	Quote *itemP = new Quote;  // same static and dynamic type
 	delete itemP;   // destructor for Quote called
 
-	itemP = new Bulk_quote;  // static and dynamic type differ
+	//itemP = new Bulk_quote;  // static and dynamic type differ
+	itemP = new Bulk_quote("01-1234", 10.99, 10, 0.1);
 	delete itemP;   // destructor for Bulk_quote called
 
 	return 0;

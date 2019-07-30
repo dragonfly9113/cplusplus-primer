@@ -6,7 +6,10 @@
 class Quote
 {
 public:
-	Quote() = default;
+	Quote() {
+		printf("Quote default constructor is called.\n");
+	}
+
 	Quote(const std::string &book, double sales_price) : bookNo(book), price(sales_price) {}
 
 	std::string isbn() const { return bookNo; }

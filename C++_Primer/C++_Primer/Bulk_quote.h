@@ -6,7 +6,10 @@
 class Bulk_quote : public Disc_quote
 {
 public:
-	Bulk_quote() = default;
+	Bulk_quote() {
+		printf("Bulk_quote default constructor is called.\n");
+	}
+
 	Bulk_quote(const std::string& book, double sales_price, std::size_t min_qty, double discount) :
 		Disc_quote(book, sales_price, min_qty, discount) {}
 
