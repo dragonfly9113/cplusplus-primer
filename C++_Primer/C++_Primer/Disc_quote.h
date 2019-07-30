@@ -10,7 +10,9 @@ public:
 	}
 
 	Disc_quote(const std::string& book, double price, std::size_t qty, double disc) :
-		Quote(book, price), quantity(qty), discount(disc) {}
+		Quote(book, price), quantity(qty), discount(disc) {
+		printf("Disc_quote(book, price, qty, disc) is called.\n");
+	}
 
 	double net_price(std::size_t) const = 0;   // pure virtual function
 

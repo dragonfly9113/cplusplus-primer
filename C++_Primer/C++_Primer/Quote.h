@@ -10,7 +10,9 @@ public:
 		printf("Quote default constructor is called.\n");
 	}
 
-	Quote(const std::string &book, double sales_price) : bookNo(book), price(sales_price) {}
+	Quote(const std::string &book, double sales_price) : bookNo(book), price(sales_price) {
+		printf("Quote(book, price) is called.\n");
+	}
 
 	std::string isbn() const { return bookNo; }
 	virtual double net_price(std::size_t n) const;

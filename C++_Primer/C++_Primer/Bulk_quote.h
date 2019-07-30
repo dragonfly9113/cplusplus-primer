@@ -11,7 +11,9 @@ public:
 	}
 
 	Bulk_quote(const std::string& book, double sales_price, std::size_t min_qty, double discount) :
-		Disc_quote(book, sales_price, min_qty, discount) {}
+		Disc_quote(book, sales_price, min_qty, discount) {
+		printf("Bulk_quote(book, price, qty, discount) is called.\n");
+	}
 
 	double net_price(std::size_t n) const override;
 
