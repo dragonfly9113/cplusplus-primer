@@ -14,6 +14,11 @@ public:
 		printf("Quote(book, price) is called.\n");
 	}
 
+	Quote(const Quote&) = default;  // memberwise copy
+	Quote(Quote&&) = default; // memberwise move
+	Quote& operator=(const Quote&) = default;   // copy assign
+	Quote& operator=(Quote&&) = default;  // move assign
+
 	std::string isbn() const { return bookNo; }
 	virtual double net_price(std::size_t n) const;
 

@@ -129,6 +129,7 @@ int main()
 #endif
 
 // 15.7 Constructors and Copy Control
+#if 0
 int main()
 {
 	Quote *itemP = new Quote;  // same static and dynamic type
@@ -137,6 +138,36 @@ int main()
 	//itemP = new Bulk_quote;  // static and dynamic type differ
 	itemP = new Bulk_quote("01-1234", 10.99, 10, 0.1);
 	delete itemP;   // destructor for Bulk_quote called
+
+	return 0;
+}
+#endif
+#if 0
+int main()
+{
+	D d;
+	//D d2(d);
+	//D d3(std::move(d));
+	return 0;
+}
+#endif
+
+int main()
+{
+	Quote q1("1234-56", 9.99);
+	std::cout << "Before move, q1.isbn = " << q1.isbn() << std::endl;
+	//std::cout << "Before move, q2.isbn = " << q2.isbn() << std::endl;
+	//q2 = std::move(q1);
+	Quote q2(std::move(q1));
+	std::cout << "After move, q1.isbn = " << q1.isbn() << std::endl;
+	std::cout << "After move, q2.isbn = " << q2.isbn() << std::endl;
+
+	Bulk_quote b1("3245-1234", 7.99, 10, 0.2);
+	std::cout << "Before move, b1." << b1.isbn() << std::endl;
+	//Bulk_quote b2(std::move(b1));
+	Bulk_quote b2 = std::move(b1);
+	std::cout << "After move, b1." << b1.isbn() << std::endl;
+	std::cout << "After move, b2." << b2.isbn() << std::endl;
 
 	return 0;
 }

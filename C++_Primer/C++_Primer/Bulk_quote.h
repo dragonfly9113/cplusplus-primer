@@ -15,6 +15,11 @@ public:
 		printf("Bulk_quote(book, price, qty, discount) is called.\n");
 	}
 
+	Bulk_quote(const Bulk_quote&) = default;
+	Bulk_quote(Bulk_quote&&) = default;
+	Bulk_quote& operator=(const Bulk_quote&) = default; // copy assign
+	Bulk_quote& operator=(Bulk_quote&&) = default; // move assign
+
 	double net_price(std::size_t n) const override;
 
 	void f(const Bulk_quote&);

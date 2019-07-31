@@ -65,6 +65,7 @@ struct Priv_Derv : private Base {
 #endif
 
 // 15.6 Class Scope under Inheritance
+#if 0
 class Base {
 public:
 	virtual int fcn() {
@@ -101,4 +102,18 @@ public:
 		printf("D2::f2() is called.\n");
 	}
 };
+#endif
 
+// 15.7 Constructors and Copy Control
+class B {
+public:
+	B() {
+		printf("B::B() is called.\n");
+	}
+
+	B(const B&) = delete;
+};
+
+class D : public B {
+	// no constructors
+};
