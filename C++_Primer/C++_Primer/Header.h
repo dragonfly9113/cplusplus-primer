@@ -134,5 +134,11 @@ struct D : public Base {
 	D(const D& d) : Base(d), d_mem(d.d_mem) {}
 	D(D&& d) : Base(std::move(d)), d_mem(std::move(d.d_mem)) {}
 
+	D &operator=(const D &rhs) {
+		Base::operator=(rhs);
+		d_mem = rhs.d_mem;
+		return *this;
+	}
+
 	int d_mem;
 };

@@ -183,10 +183,14 @@ int main()
 
 	//D d1 = D();
 	D d2(100, 200);
-	D d1(std::move(d2));
+	D d1(d2);
 
 	std::cout << "d1.base_mem = " << d1.base_mem << " d1.d_mem = " << d1.d_mem << std::endl;
 	std::cout << "d2.base_mem = " << d2.base_mem << " d2.d_mem = " << d2.d_mem << std::endl;
+
+	D d3;
+	d3 = d2;
+	std::cout << "d3.base_mem = " << d3.base_mem << " d3.d_mem = " << d3.d_mem << std::endl;
 
 	return 0;
 }
