@@ -152,6 +152,7 @@ int main()
 }
 #endif
 
+#if 0
 int main()
 {
 	Quote q1("1234-56", 9.99);
@@ -168,6 +169,24 @@ int main()
 	Bulk_quote b2 = std::move(b1);
 	std::cout << "After move, b1." << b1.isbn() << std::endl;
 	std::cout << "After move, b2." << b2.isbn() << std::endl;
+
+	return 0;
+}
+#endif
+
+// 15.7.3 Derived-class copy-control members
+int main()
+{
+	Base b1 = Base();
+	Base b2(100);
+	std::cout << "b1.base_mem = " << b1.base_mem << " b2.base_mem = " << b2.base_mem << std::endl;
+
+	//D d1 = D();
+	D d2(100, 200);
+	D d1(std::move(d2));
+
+	std::cout << "d1.base_mem = " << d1.base_mem << " d1.d_mem = " << d1.d_mem << std::endl;
+	std::cout << "d2.base_mem = " << d2.base_mem << " d2.d_mem = " << d2.d_mem << std::endl;
 
 	return 0;
 }

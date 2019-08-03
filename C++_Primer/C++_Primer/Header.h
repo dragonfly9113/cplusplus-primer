@@ -105,6 +105,7 @@ public:
 #endif
 
 // 15.7 Constructors and Copy Control
+#if 0
 class B {
 public:
 	B() {
@@ -116,4 +117,22 @@ public:
 
 class D : public B {
 	// no constructors
+};
+#endif
+
+// 15.7.3 Derived-class copy-control members
+struct Base {
+	Base() = default;  // It is necessary to define a default constructor since we are defining another contructor.
+	Base(int bMem) : base_mem(bMem) {}
+
+	int base_mem;
+};
+
+struct D : public Base {
+	D() = default;
+	D(int bMem, int dMem) : Base(bMem), d_mem(dMem) {}
+	D(const D& d) : Base(d), d_mem(d.d_mem) {}
+	D(D&& d) : Base(std::move(d)), d_mem(std::move(d.d_mem)) {}
+
+	int d_mem;
 };
