@@ -10,10 +10,13 @@ public:
 		printf("Bulk_quote default constructor is called.\n");
 	}
 
+	using Disc_quote::Disc_quote;  // Do the same thing as below, but in a much simpler way.
+/*
 	Bulk_quote(const std::string& book, double sales_price, std::size_t min_qty, double discount) :
 		Disc_quote(book, sales_price, min_qty, discount) {
 		printf("Bulk_quote(book, price, qty, discount) is called.\n");
 	}
+*/
 
 	Bulk_quote(const Bulk_quote&) = default;
 	Bulk_quote(Bulk_quote&&) = default;

@@ -175,6 +175,7 @@ int main()
 #endif
 
 // 15.7.3 Derived-class copy-control members
+#if 0
 int main()
 {
 	Base b1 = Base();
@@ -191,6 +192,15 @@ int main()
 	D d3;
 	d3 = d2;
 	std::cout << "d3.base_mem = " << d3.base_mem << " d3.d_mem = " << d3.d_mem << std::endl;
+
+	return 0;
+}
+#endif
+
+int main()
+{
+	//Quote item("978-3-16-148410-0", 9.99);			// object of base type
+	Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
 
 	return 0;
 }
