@@ -4,6 +4,8 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
+#include <vector>
+#include <memory>
 
 #include "Bulk_quote.h"
 #include "Header.h"
@@ -197,10 +199,36 @@ int main()
 }
 #endif
 
+// 15.8 Containers and Inheritance
 int main()
 {
 	//Quote item("978-3-16-148410-0", 9.99);			// object of base type
-	Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
+	//Bulk_quote bulk("123-4-56-789012-1", 11.99, 10, 0.2);	// ojbect of derived type
+
+	/*
+	std::vector<Quote> basket;
+	basket.push_back(Quote("0-201-82470-1", 50));
+	basket.push_back(Bulk_quote("0-201-54848-8", 50, 10, .25));
+	std::cout << basket.back().net_price(15) << std::endl;
+	*/
+
+	/*
+	std::vector<Quote*> basket;
+	//Quote* quote = new Quote("0-201-82470-1", 50);
+	//Bulk_quote* bulk = new Bulk_quote("0-201-54848-8", 50, 10, .25);
+	Quote quote = Quote("0-201-82470-1", 50);
+	Bulk_quote bulk = Bulk_quote("0-201-54848-8", 50, 10, .25);
+	basket.push_back(&quote);
+	basket.push_back(&bulk);
+	std::cout << basket.back()->isbn() << std::endl;
+	std::cout << basket.back()->net_price(15) << std::endl;
+	*/
+
+	std::vector<std::shared_ptr<Quote>> basket;
+	basket.push_back(std::make_shared<Quote>("0-201-82470-1", 50));
+	basket.push_back(std::make_shared<Bulk_quote>("0-201-54848-8", 50, 10, .25));
+	std::cout << basket.back()->isbn() << std::endl;
+	std::cout << basket.back()->net_price(15) << std::endl;
 
 	return 0;
 }

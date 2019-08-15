@@ -7,11 +7,11 @@ class Quote
 {
 public:
 	Quote() {
-		printf("Quote default constructor is called.\n");
+		//printf("Quote default constructor is called.\n");
 	}
 
 	Quote(const std::string &book, double sales_price) : bookNo(book), price(sales_price) {
-		printf("Quote(book, price) is called.\n");
+		//printf("Quote(book, price) is called.\n");
 	}
 
 	Quote(const Quote&) = default;  // memberwise copy
@@ -25,7 +25,7 @@ public:
 	static void statmem() {}
 
 	virtual ~Quote() {
-		printf("Quote descructor is called.\n");
+		//printf("Quote descructor is called.\n");
 	}
 
 private:

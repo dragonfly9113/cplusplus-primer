@@ -7,7 +7,7 @@ class Bulk_quote : public Disc_quote
 {
 public:
 	Bulk_quote() {
-		printf("Bulk_quote default constructor is called.\n");
+		//printf("Bulk_quote default constructor is called.\n");
 	}
 
 	using Disc_quote::Disc_quote;  // Do the same thing as below, but in a much simpler way.
@@ -28,7 +28,7 @@ public:
 	void f(const Bulk_quote&);
 
 	~Bulk_quote() {
-		printf("Bulk_quote destructor is called.\n");
+		//printf("Bulk_quote destructor is called.\n");
 	}
 };
 
