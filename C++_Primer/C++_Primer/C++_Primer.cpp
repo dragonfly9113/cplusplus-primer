@@ -240,8 +240,10 @@ int main()
 int main()
 {
 	Basket bsk;
-	bsk.add_item(Quote("0-111-11111-1", 50));
-	bsk.add_item(Quote("0-111-11111-1", 50));
+	//bsk.add_item(Quote("0-111-11111-1", 50));
+	//bsk.add_item(Quote("0-111-11111-1", 50));
+	bsk.add_item(Bulk_quote("0-111-11111-1", 50, 2, .2));
+	bsk.add_item(Bulk_quote("0-111-11111-1", 50, 2, .2));
 	bsk.add_item(Bulk_quote("0-111-11111-1", 50, 2, .2));
 	bsk.add_item(Bulk_quote("0-222-22222-2", 40, 2, .2));
 	bsk.add_item(Bulk_quote("0-222-22222-2", 40, 2, .2));
