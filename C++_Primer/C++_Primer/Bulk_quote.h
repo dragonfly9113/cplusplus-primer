@@ -25,6 +25,9 @@ public:
 
 	double net_price(std::size_t n) const override;
 
+	Bulk_quote* clone() const & { return new Bulk_quote(*this); }
+	Bulk_quote* clone() && { return new Bulk_quote(std::move(*this)); }
+
 	void f(const Bulk_quote&);
 
 	~Bulk_quote() {

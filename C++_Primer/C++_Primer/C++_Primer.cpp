@@ -7,8 +7,9 @@
 #include <vector>
 #include <memory>
 
-#include "Bulk_quote.h"
 #include "Header.h"
+#include "Bulk_quote.h"
+#include "Basket.h"
 
 #if 0
 int main()
@@ -200,6 +201,7 @@ int main()
 #endif
 
 // 15.8 Containers and Inheritance
+#if 0
 int main()
 {
 	//Quote item("978-3-16-148410-0", 9.99);			// object of base type
@@ -229,6 +231,22 @@ int main()
 	basket.push_back(std::make_shared<Bulk_quote>("0-201-54848-8", 50, 10, .25));
 	std::cout << basket.back()->isbn() << std::endl;
 	std::cout << basket.back()->net_price(15) << std::endl;
+
+	return 0;
+}
+#endif
+
+// 15.8.1 Writing a Basket class
+int main()
+{
+	Basket bsk;
+	bsk.add_item(Quote("0-111-11111-1", 50));
+	bsk.add_item(Quote("0-111-11111-1", 50));
+	bsk.add_item(Bulk_quote("0-111-11111-1", 50, 2, .2));
+	bsk.add_item(Bulk_quote("0-222-22222-2", 40, 2, .2));
+	bsk.add_item(Bulk_quote("0-222-22222-2", 40, 2, .2));
+
+	bsk.total_receipt(std::cout);
 
 	return 0;
 }

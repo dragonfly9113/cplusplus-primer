@@ -9,9 +9,20 @@ class Basket
 public:
 	// Basket uses synthesized default constructor and copy-contorl members.
 
-	void add_item(const std::shared_ptr<Quote> &sale)
+	// Original add_item version
+	//void add_item(const std::shared_ptr<Quote> &sale)
+	//{
+	//	items.insert(sale);
+	//}
+	
+	void add_item(const Quote& sale)  // copy the given object
 	{
-		items.insert(sale);
+		items.insert(std::shared_ptr<Quote>(sale.clone()));
+	}
+
+	void add_item(Quote&& sale) // move the given object
+	{
+		items.insert(std::shared_ptr<Quote>(std::move(sale).clone()));
 	}
 
 	// Print the total price for each book and the overall total for all items in the basket
