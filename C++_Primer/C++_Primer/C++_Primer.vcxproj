@@ -155,17 +155,20 @@
     <ClInclude Include="Bulk_quote.h" />
     <ClInclude Include="Disc_quote.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="NotQuery.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Query.h" />
     <ClInclude Include="Query_base.h" />
     <ClInclude Include="Quote.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="WordQuery.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Basket.cpp" />
     <ClCompile Include="Bulk_quote.cpp" />
     <ClCompile Include="C++_Primer.cpp" />
     <ClCompile Include="Disc_quote.cpp" />
+    <ClCompile Include="NotQuery.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -175,6 +178,7 @@
     <ClCompile Include="Query.cpp" />
     <ClCompile Include="Query_base.cpp" />
     <ClCompile Include="Quote.cpp" />
+    <ClCompile Include="WordQuery.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
