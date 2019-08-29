@@ -51,6 +51,12 @@
     <ClInclude Include="BinaryQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AndQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OrQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -84,6 +90,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BinaryQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AndQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OrQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
