@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include <memory>
@@ -237,6 +238,7 @@ int main()
 #endif
 
 // 15.8.1 Writing a Basket class
+#if 0
 int main()
 {
 	Basket bsk;
@@ -251,4 +253,32 @@ int main()
 	bsk.total_receipt(std::cout);
 
 	return 0;
+}
+#endif
+
+// 15.9 Text Queries Revisited
+void runQueries(std::ifstream &infile)
+{
+	// infile is an ifstream that is the file we want to query
+	TextQuery tq(infile);  // store the file and build the query map
+
+	// interate with the user: prompt for a word to find and print results
+	while(true) {
+		std::cout << "enter word to look for, or q to quit: ";
+		std::string s;
+		
+		// stop if we hit end-of-file on the input or if a 'q' is entered
+		if (!(std::cin >> s) || s == "q") break;
+
+		// run the query and print the results
+		print(std::cout, tq.query(s)) << std::endl;
+	}
+}
+
+int main()
+{
+
+
+
+
 }

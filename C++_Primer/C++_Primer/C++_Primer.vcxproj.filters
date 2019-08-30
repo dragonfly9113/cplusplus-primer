@@ -57,6 +57,9 @@
     <ClInclude Include="OrQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OrQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

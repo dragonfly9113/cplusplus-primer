@@ -163,6 +163,7 @@
     <ClInclude Include="Query.h" />
     <ClInclude Include="Query_base.h" />
     <ClInclude Include="Quote.h" />
+    <ClInclude Include="TextQuery.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="WordQuery.h" />
   </ItemGroup>
@@ -184,6 +185,7 @@
     <ClCompile Include="Query.cpp" />
     <ClCompile Include="Query_base.cpp" />
     <ClCompile Include="Quote.cpp" />
+    <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="WordQuery.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
