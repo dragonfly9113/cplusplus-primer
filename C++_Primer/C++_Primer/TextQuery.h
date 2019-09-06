@@ -2,6 +2,8 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include <map>
 #include <set>
 
