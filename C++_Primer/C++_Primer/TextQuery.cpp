@@ -19,3 +19,16 @@ TextQuery::TextQuery(std::ifstream &is) : file(new std::vector<std::string>)
 		}
 	}
 }
+
+QueryResult
+TextQuery::query(const std::string& sought) const
+{
+	// we'll return a pointer to this set if we don't find sought
+	static std::shared_ptr<std::set<line_no>> nodata(new std::set<line_no>);
+	// use find and not a subscript to avoid adding words to wm!
+	auto loc = wm.find(sought);
+	if (loc == wm.end())
+		return QueryResult(sought, nodata, file);	// not found
+	else
+		return QueryResult(sought, loc->second, file);
+}

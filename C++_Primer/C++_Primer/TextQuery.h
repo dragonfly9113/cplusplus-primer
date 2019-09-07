@@ -7,6 +7,8 @@
 #include <map>
 #include <set>
 
+#include "QueryResult.h"
+
 class QueryResult;  // declaration needed for return type in the query funciton.
 class TextQuery
 {
