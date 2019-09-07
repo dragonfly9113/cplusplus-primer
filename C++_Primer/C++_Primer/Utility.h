@@ -16,6 +16,11 @@ double print_total(std::ostream &os, const Quote &item, size_t n)
 	return ret;
 }
 
+std::string make_plural(size_t ctr, const std::string& word, const std::string& ending)
+{
+	return (ctr > 1) ? word + ending : word;
+}
+
 std::ostream& print(std::ostream& os, const QueryResult& qr)
 {
 	// if the word was found, print the count and all occurences
@@ -28,9 +33,4 @@ std::ostream& print(std::ostream& os, const QueryResult& qr)
 		<< *(qr.file->begin() + num) << std::endl;
 
 	return os;
-}
-
-std::string make_plural(size_t ctr, const std::string& word, const std::string& ending)
-{
-	return (ctr > 1) ? word + ending : word;
 }

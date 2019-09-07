@@ -2,6 +2,9 @@
 #include "Query_base.h"
 #include "Query.h"
 
+class QueryResult;
+class TextQuery;
+
 class NotQuery : public Query_base
 {
 	friend Query operator~(const Query &);

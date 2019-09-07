@@ -1,4 +1,8 @@
 #pragma once
+#include <memory>
+
+#include "TextQuery.h"
+#include "QueryResult.h"
 
 // Abstract class acts as a base class for concrete query types; all members a private
 class Query_base

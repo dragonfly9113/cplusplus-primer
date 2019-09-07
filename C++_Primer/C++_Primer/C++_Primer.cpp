@@ -11,6 +11,7 @@
 #include "Header.h"
 #include "Bulk_quote.h"
 #include "Basket.h"
+#include "TextQuery.h"
 
 #if 0
 int main()

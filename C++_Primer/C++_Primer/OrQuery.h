@@ -1,6 +1,9 @@
 #pragma once
 #include "BinaryQuery.h"
 
+class QueryResult;
+class TextQuery;
+
 class OrQuery : public BinaryQuery
 {
 	friend Query operator|(const Query&, const Query&);
