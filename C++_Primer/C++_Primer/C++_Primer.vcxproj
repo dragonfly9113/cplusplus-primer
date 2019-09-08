@@ -190,6 +190,9 @@
     <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="WordQuery.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="story.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

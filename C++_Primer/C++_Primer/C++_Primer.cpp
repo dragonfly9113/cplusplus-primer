@@ -278,8 +278,11 @@ void runQueries(std::ifstream &infile)
 
 int main()
 {
+	std::ifstream ifs("story.txt", std::ifstream::in);
 
+	if (ifs.good())
+		runQueries(ifs);
 
-
-
+	ifs.close();
+	return 0;
 }
