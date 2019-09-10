@@ -1,4 +1,7 @@
 #pragma once
+#include <algorithm>
+#include <iterator>
+
 #include "BinaryQuery.h"
 
 class QueryResult;
